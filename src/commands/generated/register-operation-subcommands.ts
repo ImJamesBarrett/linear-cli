@@ -21,6 +21,7 @@ import type {
   RegistryArgumentDefinition,
 } from "../../core/registry/types.js";
 import { writeJsonOutput } from "../../core/output/json.js";
+import { writeHumanOutput } from "../../core/output/human.js";
 import type { CommandExecutionEnvelope } from "../../core/output/types.js";
 import { createRuntimeContext } from "../../core/runtime/context.js";
 import { CliError, EXIT_CODES } from "../../core/runtime/exit-codes.js";
@@ -311,7 +312,9 @@ function writeCommandOutput(
     return;
   }
 
-  console.log(JSON.stringify(envelope.data, null, 2));
+  writeHumanOutput(entry, envelope, {
+    verbose: options.verbose,
+  });
 }
 
 function isCommand(value: unknown): value is Command {
