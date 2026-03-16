@@ -13,5 +13,15 @@ describe("query command registration", () => {
     expect(subcommandNames).toContain("viewer");
     expect(subcommandNames).toContain("dummy");
   });
-});
 
+  it("exposes --all only on connection-returning queries", () => {
+    const command = createQueryCommand();
+    const issues = command.commands.find((subcommand) => subcommand.name() === "issues");
+    const viewer = command.commands.find((subcommand) => subcommand.name() === "viewer");
+
+    expect(issues).toBeDefined();
+    expect(viewer).toBeDefined();
+    expect(issues!.options.some((option) => option.long === "--all")).toBe(true);
+    expect(viewer!.options.some((option) => option.long === "--all")).toBe(false);
+  });
+});

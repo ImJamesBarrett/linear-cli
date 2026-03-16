@@ -7,6 +7,10 @@ import {
   resolveProfileConfig,
 } from "../../core/config/merge-sources.js";
 import { executeCanonicalGraphQLOperation } from "../../core/graphql/execute.js";
+import {
+  supportsAllPagination,
+  validatePaginationInvocation,
+} from "../../core/graphql/pagination/validation.js";
 import { loadSelectionOverride } from "../../core/graphql/selection-input.js";
 import { resolveOperationVariables } from "../../core/graphql/variables.js";
 import type {
@@ -42,6 +46,10 @@ export function registerGeneratedOperationSubcommands(
       }
     }
 
+    if (supportsAllPagination(entry)) {
+      subcommand.option("--all", "fetch all forward pages for connection queries");
+    }
+
     subcommand.option("--select <fields|@file>", "override the default GraphQL selection set");
 
     subcommand.action(async (...actionArgs: unknown[]) => {
@@ -52,6 +60,23 @@ export function registerGeneratedOperationSubcommands(
       }
 
       const positionals = mapPositionalArguments(entry, actionArgs.slice(0, -1));
+      const rawOptions = invokedCommand.optsWithGlobals<Record<string, unknown>>();
+
+      validatePaginationInvocation(entry, {
+        all: getExplicitBooleanOptionValue(invokedCommand, rawOptions, "all"),
+        after: getExplicitOptionValue(invokedCommand, rawOptions, "after"),
+        before: getExplicitOptionValue(invokedCommand, rawOptions, "before"),
+        first: getExplicitOptionValue(invokedCommand, rawOptions, "first"),
+        last: getExplicitOptionValue(invokedCommand, rawOptions, "last"),
+      });
+
+      if (getExplicitBooleanOptionValue(invokedCommand, rawOptions, "all")) {
+        throw new CliError(
+          `The --all pagination mode for ${entry.cliCommand} ${entry.cliSubcommand} is not implemented yet.`,
+          EXIT_CODES.validationFailure,
+        );
+      }
+
       const runtimeContext = createRuntimeContext(invokedCommand);
       const config = await loadConfigFile();
       const profileConfig = resolveProfileConfig({
@@ -236,6 +261,26 @@ function getOptionValueKey(argument: RegistryArgumentDefinition): string | null 
 function wasOptionProvided(command: Command, optionKey: string): boolean {
   const source = command.getOptionValueSource(optionKey);
   return source !== undefined && source !== null && source !== "default";
+}
+
+function getExplicitOptionValue(
+  command: Command,
+  rawOptions: Record<string, unknown>,
+  optionKey: string,
+): unknown {
+  if (!wasOptionProvided(command, optionKey)) {
+    return undefined;
+  }
+
+  return rawOptions[optionKey];
+}
+
+function getExplicitBooleanOptionValue(
+  command: Command,
+  rawOptions: Record<string, unknown>,
+  optionKey: string,
+): boolean {
+  return getExplicitOptionValue(command, rawOptions, optionKey) === true;
 }
 
 function writeCommandOutput(
