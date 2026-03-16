@@ -88,8 +88,16 @@ export function createNextForwardPaginationVariables(
   page: Pick<ExtractedConnectionPage, "pageInfo">,
 ): Record<string, unknown> {
   return {
-    ...variables,
+    ...createInitialForwardPaginationVariables(variables),
     after: page.pageInfo.endCursor,
+  };
+}
+
+export function createInitialForwardPaginationVariables(
+  variables: Record<string, unknown>,
+): Record<string, unknown> {
+  return {
+    ...variables,
     before: undefined,
     first: resolveForwardPageSize(variables),
     last: undefined,

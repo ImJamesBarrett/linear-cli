@@ -7,6 +7,7 @@ import {
   resolveProfileConfig,
 } from "../../core/config/merge-sources.js";
 import { executeCanonicalGraphQLOperation } from "../../core/graphql/execute.js";
+import { executeAllConnectionPages } from "../../core/graphql/pagination/execute-all.js";
 import {
   supportsAllPagination,
   validatePaginationInvocation,
@@ -61,21 +62,15 @@ export function registerGeneratedOperationSubcommands(
 
       const positionals = mapPositionalArguments(entry, actionArgs.slice(0, -1));
       const rawOptions = invokedCommand.optsWithGlobals<Record<string, unknown>>();
+      const allRequested = getExplicitBooleanOptionValue(invokedCommand, rawOptions, "all");
 
       validatePaginationInvocation(entry, {
-        all: getExplicitBooleanOptionValue(invokedCommand, rawOptions, "all"),
+        all: allRequested,
         after: getExplicitOptionValue(invokedCommand, rawOptions, "after"),
         before: getExplicitOptionValue(invokedCommand, rawOptions, "before"),
         first: getExplicitOptionValue(invokedCommand, rawOptions, "first"),
         last: getExplicitOptionValue(invokedCommand, rawOptions, "last"),
       });
-
-      if (getExplicitBooleanOptionValue(invokedCommand, rawOptions, "all")) {
-        throw new CliError(
-          `The --all pagination mode for ${entry.cliCommand} ${entry.cliSubcommand} is not implemented yet.`,
-          EXIT_CODES.validationFailure,
-        );
-      }
 
       const runtimeContext = createRuntimeContext(invokedCommand);
       const config = await loadConfigFile();
@@ -99,15 +94,28 @@ export function registerGeneratedOperationSubcommands(
         positionals,
         runtimeContext.cwd,
       );
-      const envelope = await executeCanonicalGraphQLOperation(entry, {
-        allowPartialData: runtimeContext.globalOptions.allowPartialData,
-        authorization,
-        baseUrl: profileConfig.baseUrl,
-        extraHeaders: profileConfig.headers,
-        publicFileUrlsExpireIn: profileConfig.publicFileUrlsExpireIn,
-        selectionOverride,
-        variables,
-      });
+      const envelope = allRequested
+        ? await executeAllConnectionPages(entry, {
+            allowPartialData: runtimeContext.globalOptions.allowPartialData,
+            authorization,
+            baseUrl: profileConfig.baseUrl,
+            extraHeaders: profileConfig.headers,
+            publicFileUrlsExpireIn: profileConfig.publicFileUrlsExpireIn,
+            selectionOverride,
+            variables,
+          })
+        : {
+            ...(await executeCanonicalGraphQLOperation(entry, {
+              allowPartialData: runtimeContext.globalOptions.allowPartialData,
+              authorization,
+              baseUrl: profileConfig.baseUrl,
+              extraHeaders: profileConfig.headers,
+              publicFileUrlsExpireIn: profileConfig.publicFileUrlsExpireIn,
+              selectionOverride,
+              variables,
+            })),
+            pagination: null,
+          };
 
       writeCommandOutput(envelope, profileConfig.format);
     });
@@ -288,6 +296,7 @@ function writeCommandOutput(
     data: unknown;
     errors: unknown[];
     headers: Record<string, string>;
+    pagination: unknown;
     rateLimit: unknown;
     status: number;
   },
