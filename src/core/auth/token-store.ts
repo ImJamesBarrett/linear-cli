@@ -10,11 +10,14 @@ export type SecretValue = string | null;
 
 export interface StoredProfileSecrets {
   accessToken?: string;
+  actor?: "app" | "user";
   apiKey?: string;
   clientId?: string;
   clientSecret?: string;
   expiresAt?: string;
   refreshToken?: string;
+  scopes?: string[];
+  tokenType?: string;
 }
 
 export interface PlaintextCredentialsFile {
