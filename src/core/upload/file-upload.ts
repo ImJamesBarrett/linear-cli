@@ -1,6 +1,8 @@
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 
+import { fetch } from "undici";
+
 import { mutationRegistry } from "../../generated/mutation-registry.js";
 import type { FetchLike } from "../auth/oauth-auth.js";
 import { executeCanonicalGraphQLOperation } from "../graphql/execute.js";

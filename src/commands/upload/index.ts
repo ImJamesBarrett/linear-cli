@@ -23,7 +23,7 @@ export function createUploadCommand(): Command {
     .option("--size <bytes>", "override the detected file size")
     .option("--make-public", "request a public asset URL if supported")
     .option("--metadata <json|@file>", "attach JSON metadata to the upload")
-    .action(async (filePath: string, invokedCommand: Command) => {
+    .action(async (filePath: string, _options: unknown, invokedCommand: Command) => {
       const runtimeContext = createRuntimeContext(invokedCommand);
       const config = await loadConfigFile();
       const profileConfig = resolveProfileConfig({
