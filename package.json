@@ -1,0 +1,26 @@
+{
+  "name": "linear-cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Schema-driven CLI wrapper around the Linear GraphQL API.",
+  "type": "module",
+  "bin": {
+    "linear": "./dist/bin/linear.js"
+  },
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "dev": "node --import tsx ./src/bin/linear.ts",
+    "fetch:schema": "node --import tsx ./scripts/fetch-schema.ts",
+    "generate": "node --import tsx ./scripts/generate-registry.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}
+
