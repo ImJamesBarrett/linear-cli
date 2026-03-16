@@ -1,5 +1,11 @@
 import { Command } from "commander";
 
+import { createAuthCommand } from "../commands/auth/index.js";
+import { createConfigCommand } from "../commands/config/index.js";
+import { createGraphqlCommand } from "../commands/graphql/index.js";
+import { createMutationCommand } from "../commands/mutation/index.js";
+import { createQueryCommand } from "../commands/query/index.js";
+import { createUploadCommand } from "../commands/upload/index.js";
 import { registerGlobalOptions } from "./global-options.js";
 import { configureHelp } from "./help.js";
 import { EXIT_CODES } from "../core/runtime/exit-codes.js";
@@ -15,6 +21,12 @@ export function createProgram(): Command {
 
   registerGlobalOptions(program);
   configureHelp(program);
+  program.addCommand(createAuthCommand());
+  program.addCommand(createConfigCommand());
+  program.addCommand(createQueryCommand());
+  program.addCommand(createMutationCommand());
+  program.addCommand(createGraphqlCommand());
+  program.addCommand(createUploadCommand());
   program.configureOutput({
     outputError: (text, write) => write(text),
   });
