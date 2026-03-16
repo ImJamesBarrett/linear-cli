@@ -28,31 +28,14 @@ import { CliError, EXIT_CODES } from "../../core/runtime/exit-codes.js";
 import { loadJsonInput } from "../../core/util/json-input.js";
 import type { OutputFormat } from "../../types/cli.js";
 
-export interface GeneratedOperationRegistrationOptions {
-  description?: (entry: OperationRegistryEntry) => string;
-}
-
 export function registerGeneratedOperationSubcommands(
   command: Command,
   registry: GeneratedRegistry<OperationRegistryEntry>,
-  options: GeneratedOperationRegistrationOptions = {},
 ): void {
-  registerGeneratedOperationEntries(command, registry.entries, options);
-}
-
-export function registerGeneratedOperationEntries(
-  command: Command,
-  entries: readonly OperationRegistryEntry[],
-  options: GeneratedOperationRegistrationOptions = {},
-): void {
-  for (const entry of entries) {
+  for (const entry of registry.entries) {
     const subcommand = command
       .command(entry.cliSubcommand)
-      .description(
-        options.description?.(entry) ??
-          entry.description ??
-          `Execute the ${entry.graphqlName} ${entry.kind}.`,
-      );
+      .description(entry.description || `Execute the ${entry.graphqlName} ${entry.kind}.`);
 
     for (const argument of entry.arguments) {
       if (argument.positionalName) {

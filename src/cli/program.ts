@@ -6,7 +6,6 @@ import { createGraphqlCommand } from "../commands/graphql/index.js";
 import { createMutationCommand } from "../commands/mutation/index.js";
 import { createQueryCommand } from "../commands/query/index.js";
 import { createUploadCommand } from "../commands/upload/index.js";
-import { registerGeneratedOperationAliases } from "../commands/generated/register-operation-aliases.js";
 import { registerGlobalOptions } from "./global-options.js";
 import { configureHelp } from "./help.js";
 import { EXIT_CODES } from "../core/runtime/exit-codes.js";
@@ -22,7 +21,6 @@ export function createProgram(): Command {
 
   registerGlobalOptions(program);
   configureHelp(program);
-  registerGeneratedOperationAliases(program);
   program.addCommand(createAuthCommand());
   program.addCommand(createConfigCommand());
   program.addCommand(createQueryCommand());

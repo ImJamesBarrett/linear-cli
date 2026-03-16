@@ -133,14 +133,6 @@ linear mutation issue-create \
   --select 'success issue { id identifier title }'
 ```
 
-The same generated operation is also available as a root-level alias:
-
-```bash
-linear issue-create \
-  --input '{"teamId":"team_123","title":"Example issue"}' \
-  --select 'success issue { id identifier title }'
-```
-
 ### Pagination
 
 Run a single page query:
