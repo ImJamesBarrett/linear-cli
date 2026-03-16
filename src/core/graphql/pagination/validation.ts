@@ -1,5 +1,6 @@
 import type { OperationRegistryEntry } from "../../registry/types.js";
 import { CliError, EXIT_CODES } from "../../runtime/exit-codes.js";
+import { isConnectionOperation } from "./connection.js";
 
 export interface PaginationInvocation {
   all: boolean;
@@ -10,7 +11,7 @@ export interface PaginationInvocation {
 }
 
 export function supportsAllPagination(entry: OperationRegistryEntry): boolean {
-  return entry.kind === "query" && entry.defaultSelectionStrategy === "connection";
+  return entry.kind === "query" && isConnectionOperation(entry);
 }
 
 export function validatePaginationInvocation(
