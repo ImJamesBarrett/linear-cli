@@ -17,8 +17,8 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "kind": "query",
       "graphqlName": "_dummy",
       "cliCommand": "linear query",
-      "cliSubcommand": "_dummy",
-      "entity": "String",
+      "cliSubcommand": "dummy",
+      "entity": "System",
       "description": "",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -647,7 +647,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "cliCommand": "linear query",
       "cliSubcommand": "attachment",
       "entity": "Attachment",
-      "description": "One specific issue attachment.\n[Deprecated] 'url' can no longer be used as the 'id' parameter. Use 'attachmentsForUrl' instead",
+      "description": "One specific issue attachment. [Deprecated] 'url' can no longer be used as the 'id' parameter. Use 'attachmentsForUrl' instead",
       "arguments": [
         {
           "graphqlName": "id",
@@ -681,9 +681,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
         }
       },
       "returnTypeSignature": "Attachment!",
-      "tags": [
-        "deprecated"
-      ],
+      "tags": [],
       "deprecatedReason": null,
       "sourceLine": 31731,
       "defaultSelectionStrategy": "entity"
@@ -728,9 +726,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
         }
       },
       "returnTypeSignature": "Issue!",
-      "tags": [
-        "deprecated"
-      ],
+      "tags": [],
       "deprecatedReason": "Will be removed in near future, please use `attachmentsForURL` to get attachments and their issues instead.",
       "sourceLine": 31736,
       "defaultSelectionStrategy": "entity"
@@ -741,7 +737,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "cliCommand": "linear query",
       "cliSubcommand": "attachments",
       "entity": "Attachment",
-      "description": "All issue attachments.\n\nTo get attachments for a given URL, use `attachmentsForURL` query.",
+      "description": "All issue attachments. To get attachments for a given URL, use `attachmentsForURL` query.",
       "arguments": [
         {
           "graphqlName": "after",
@@ -1010,7 +1006,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentSources",
       "cliCommand": "linear query",
       "cliSubcommand": "attachment-sources",
-      "entity": "AttachmentSourcesPayload",
+      "entity": "Attachment",
       "description": "[Internal] Get a list of all unique attachment sources in the workspace.",
       "arguments": [
         {
@@ -1188,7 +1184,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "auditEntryTypes",
       "cliCommand": "linear query",
       "cliSubcommand": "audit-entry-types",
-      "entity": "AuditEntryType",
+      "entity": "AuditEntry",
       "description": "List of audit entry types.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -1256,7 +1252,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "availableUsers",
       "cliCommand": "linear query",
       "cliSubcommand": "available-users",
-      "entity": "AuthResolverResponse",
+      "entity": "User",
       "description": "Fetch users belonging to this user account.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -2234,7 +2230,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customViewDetailsSuggestion",
       "cliCommand": "linear query",
       "cliSubcommand": "custom-view-details-suggestion",
-      "entity": "CustomViewSuggestionPayload",
+      "entity": "CustomView",
       "description": "[INTERNAL] Suggests metadata for a view based on it's filters.",
       "arguments": [
         {
@@ -2298,7 +2294,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customViewHasSubscribers",
       "cliCommand": "linear query",
       "cliSubcommand": "custom-view-has-subscribers",
-      "entity": "CustomViewHasSubscribersPayload",
+      "entity": "CustomView",
       "description": "Whether a custom view has other subscribers than the current user in the organization.",
       "arguments": [
         {
@@ -2722,7 +2718,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "documentContentHistory",
       "cliCommand": "linear query",
       "cliSubcommand": "document-content-history",
-      "entity": "DocumentContentHistoryPayload",
+      "entity": "DocumentContent",
       "description": "A collection of document content history entries.",
       "arguments": [
         {
@@ -3316,7 +3312,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "failuresForOauthWebhooks",
       "cliCommand": "linear query",
       "cliSubcommand": "failures-for-oauth-webhooks",
-      "entity": "WebhookFailureEvent",
+      "entity": "Webhook",
       "description": "[INTERNAL] Webhook failure events for webhooks that belong to an OAuth application. (last 50)",
       "arguments": [
         {
@@ -3536,7 +3532,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "fetchData",
       "cliCommand": "linear query",
       "cliSubcommand": "fetch-data",
-      "entity": "FetchDataPayload",
+      "entity": "Integration",
       "description": "[Internal] Fetch an arbitrary set of data using natural language query. Be specific about what you want including properties for each entity, sort order, filters, limit and properties.",
       "arguments": [
         {
@@ -4387,7 +4383,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "positionalArgumentsUsage": "",
       "flagUsage": [
         "--integration-id <value>",
-        "--scopes <json|@file>"
+        "--scopes <value>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -4917,7 +4913,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueFilterSuggestion",
       "cliCommand": "linear query",
       "cliSubcommand": "issue-filter-suggestion",
-      "entity": "IssueFilterSuggestionPayload",
+      "entity": "Issue",
       "description": "Suggests filters for an issue view based on a text prompt.",
       "arguments": [
         {
@@ -4994,7 +4990,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportCheckCSV",
       "cliCommand": "linear query",
       "cliSubcommand": "issue-import-check-csv",
-      "entity": "IssueImportCheckPayload",
+      "entity": "IssueImport",
       "description": "Checks a CSV file validity against a specific import service.",
       "arguments": [
         {
@@ -5060,7 +5056,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportCheckSync",
       "cliCommand": "linear query",
       "cliSubcommand": "issue-import-check-sync",
-      "entity": "IssueImportSyncCheckPayload",
+      "entity": "IssueImport",
       "description": "Checks whether it will be possible to setup sync for this project or repository at the end of import",
       "arguments": [
         {
@@ -5107,7 +5103,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportJqlCheck",
       "cliCommand": "linear query",
       "cliSubcommand": "issue-import-jql-check",
-      "entity": "IssueImportJqlCheckPayload",
+      "entity": "IssueImport",
       "description": "Checks whether a custom JQL query is valid and can be used to filter issues of a Jira import",
       "arguments": [
         {
@@ -5408,7 +5404,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issuePriorityValues",
       "cliCommand": "linear query",
       "cliSubcommand": "issue-priority-values",
-      "entity": "IssuePriorityValue",
+      "entity": "Issue",
       "description": "Issue priority values and corresponding labels.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -5605,7 +5601,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueRepositorySuggestions",
       "cliCommand": "linear query",
       "cliSubcommand": "issue-repository-suggestions",
-      "entity": "RepositorySuggestionsPayload",
+      "entity": "Issue",
       "description": "Returns code repositories that are most likely to be relevant for implementing an issue.",
       "arguments": [
         {
@@ -6000,7 +5996,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueTitleSuggestionFromCustomerRequest",
       "cliCommand": "linear query",
       "cliSubcommand": "issue-title-suggestion-from-customer-request",
-      "entity": "IssueTitleSuggestionFromCustomerRequestPayload",
+      "entity": "Issue",
       "description": "Suggests issue title based on a customer request.",
       "arguments": [
         {
@@ -6622,7 +6618,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationsUnreadCount",
       "cliCommand": "linear query",
       "cliSubcommand": "notifications-unread-count",
-      "entity": "Int",
+      "entity": "Notification",
       "description": "[Internal] A number of unread notifications.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -6723,7 +6719,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationExists",
       "cliCommand": "linear query",
       "cliSubcommand": "organization-exists",
-      "entity": "OrganizationExistsPayload",
+      "entity": "Organization",
       "description": "Does the organization exist.",
       "arguments": [
         {
@@ -6815,7 +6811,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationInviteDetails",
       "cliCommand": "linear query",
       "cliSubcommand": "organization-invite-details",
-      "entity": "OrganizationInviteDetailsPayload",
+      "entity": "Organization",
       "description": "One specific organization invite.",
       "arguments": [
         {
@@ -6978,7 +6974,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationMeta",
       "cliCommand": "linear query",
       "cliSubcommand": "organization-meta",
-      "entity": "OrganizationMeta",
+      "entity": "Organization",
       "description": "[INTERNAL] Get organization metadata by urlKey or organization id.",
       "arguments": [
         {
@@ -7068,7 +7064,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectFilterSuggestion",
       "cliCommand": "linear query",
       "cliSubcommand": "project-filter-suggestion",
-      "entity": "ProjectFilterSuggestionPayload",
+      "entity": "Project",
       "description": "Suggests filters for a project view based on a text prompt.",
       "arguments": [
         {
@@ -7968,7 +7964,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectStatusProjectCount",
       "cliCommand": "linear query",
       "cliSubcommand": "project-status-project-count",
-      "entity": "ProjectStatusCountPayload",
+      "entity": "ProjectStatus",
       "description": "[INTERNAL] Count of projects using this project status across the organization.",
       "arguments": [
         {
@@ -8193,7 +8189,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "pushSubscriptionTest",
       "cliCommand": "linear query",
       "cliSubcommand": "push-subscription-test",
-      "entity": "PushSubscriptionTestPayload",
+      "entity": "PushSubscription",
       "description": "Sends a test push message.",
       "arguments": [
         {
@@ -8228,8 +8224,8 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlArgsSignature": "sendStrategy: SendStrategy, targetMobile: Boolean",
       "positionalArgumentsUsage": "",
       "flagUsage": [
-        "--send-strategy <value>",
-        "--target-mobile"
+        "--send-strategy <json|@file>",
+        "--target-mobile <json|@file>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -8251,7 +8247,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "rateLimitStatus",
       "cliCommand": "linear query",
       "cliSubcommand": "rate-limit-status",
-      "entity": "RateLimitPayload",
+      "entity": "RateLimit",
       "description": "The status of the rate limiter.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -8693,7 +8689,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlArgsSignature": "first: Int, term: String!",
       "positionalArgumentsUsage": "",
       "flagUsage": [
-        "--first <value>",
+        "--first <json|@file>",
         "--term <value>"
       ],
       "returnType": {
@@ -9095,9 +9091,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
         }
       },
       "returnTypeSignature": "RoadmapToProject!",
-      "tags": [
-        "deprecated"
-      ],
+      "tags": [],
       "deprecatedReason": "RoadmapToProject is deprecated, use InitiativeToProject instead.",
       "sourceLine": 33400,
       "defaultSelectionStrategy": "entity"
@@ -9227,7 +9221,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "searchDocuments",
       "cliCommand": "linear query",
       "cliSubcommand": "search-documents",
-      "entity": "DocumentSearchPayload",
+      "entity": "Document",
       "description": "Search documents.",
       "arguments": [
         {
@@ -9394,7 +9388,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "searchIssues",
       "cliCommand": "linear query",
       "cliSubcommand": "search-issues",
-      "entity": "IssueSearchPayload",
+      "entity": "Issue",
       "description": "Search issues.",
       "arguments": [
         {
@@ -9576,7 +9570,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "searchProjects",
       "cliCommand": "linear query",
       "cliSubcommand": "search-projects",
-      "entity": "ProjectSearchPayload",
+      "entity": "Project",
       "description": "Search projects.",
       "arguments": [
         {
@@ -9743,7 +9737,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "semanticSearch",
       "cliCommand": "linear query",
       "cliSubcommand": "semantic-search",
-      "entity": "SemanticSearchPayload",
+      "entity": "SemanticSearchResult",
       "description": "Search for various resources using natural language.",
       "arguments": [
         {
@@ -9836,7 +9830,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
         "--include-archived",
         "--max-results <value>",
         "--query <value>",
-        "--types <json|@file>"
+        "--types <value>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -9858,7 +9852,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "ssoUrlFromEmail",
       "cliCommand": "linear query",
       "cliSubcommand": "sso-url-from-email",
-      "entity": "SsoUrlFromEmailResponse",
+      "entity": "SSO/Auth",
       "description": "Fetch SSO login URL for the email provided.",
       "arguments": [
         {
@@ -9917,7 +9911,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "flagUsage": [
         "--email <value>",
         "--is-desktop",
-        "--type <value>"
+        "--type <json|@file>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -11035,7 +11029,7 @@ export const queryRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "verifyGitHubEnterpriseServerInstallation",
       "cliCommand": "linear query",
       "cliSubcommand": "verify-git-hub-enterprise-server-installation",
-      "entity": "GitHubEnterpriseServerInstallVerificationPayload",
+      "entity": "Integration",
       "description": "Verify that we received the correct response from the GitHub Enterprise Server.",
       "arguments": [
         {

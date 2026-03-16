@@ -18,7 +18,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "agentActivityCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "agent-activity-create",
-      "entity": "AgentActivityPayload",
+      "entity": "AgentActivity",
       "description": "Creates an agent activity.",
       "arguments": [
         {
@@ -65,7 +65,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "agentActivityCreatePrompt",
       "cliCommand": "linear mutation",
       "cliSubcommand": "agent-activity-create-prompt",
-      "entity": "AgentActivityPayload",
+      "entity": "AgentActivity",
       "description": "[Internal] Creates a prompt agent activity from Linear user input.",
       "arguments": [
         {
@@ -114,7 +114,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "agentSessionCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "agent-session-create",
-      "entity": "AgentSessionPayload",
+      "entity": "AgentSession",
       "description": "[Internal] Creates a new agent session on behalf of the current user",
       "arguments": [
         {
@@ -178,7 +178,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "agentSessionCreateOnComment",
       "cliCommand": "linear mutation",
       "cliSubcommand": "agent-session-create-on-comment",
-      "entity": "AgentSessionPayload",
+      "entity": "AgentSession",
       "description": "Creates a new agent session on a rootcomment.",
       "arguments": [
         {
@@ -225,7 +225,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "agentSessionCreateOnIssue",
       "cliCommand": "linear mutation",
       "cliSubcommand": "agent-session-create-on-issue",
-      "entity": "AgentSessionPayload",
+      "entity": "AgentSession",
       "description": "Creates a new agent session on an issue.",
       "arguments": [
         {
@@ -272,7 +272,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "agentSessionUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "agent-session-update",
-      "entity": "AgentSessionPayload",
+      "entity": "AgentSession",
       "description": "Updates an agent session.",
       "arguments": [
         {
@@ -337,7 +337,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "agentSessionUpdateExternalUrl",
       "cliCommand": "linear mutation",
       "cliSubcommand": "agent-session-update-external-url",
-      "entity": "AgentSessionPayload",
+      "entity": "AgentSession",
       "description": "Updates the externalUrl of an agent session, which is an agent-hosted page associated with this session.",
       "arguments": [
         {
@@ -402,7 +402,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "airbyteIntegrationConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "airbyte-integration-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Creates an integration api key for Airbyte to connect with Linear.",
       "arguments": [
         {
@@ -449,7 +449,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-create",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Creates a new attachment, or updates existing if the same `url` and `issueId` is used. To create an integration-aware attachment, use the integration-specific mutations such as `attachmentLinkZendesk`, `attachmentLinkSlack`, or `attachmentLinkURL` instead.",
       "arguments": [
         {
@@ -496,7 +496,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-delete",
-      "entity": "DeletePayload",
+      "entity": "Attachment",
       "description": "Deletes an issue attachment.",
       "arguments": [
         {
@@ -541,7 +541,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkDiscord",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-discord",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing Discord message to an issue. This creates a rich attachment using the workspace's Discord integration.",
       "arguments": [
         {
@@ -704,7 +704,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkFront",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-front",
-      "entity": "FrontAttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing Front conversation to an issue. This creates a rich attachment using the workspace's Front integration, enabling features like automated conversation updates.",
       "arguments": [
         {
@@ -829,7 +829,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkGitHubIssue",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-git-hub-issue",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link a GitHub issue to a Linear issue. This creates a rich attachment using the workspace's GitHub integration, enabling features like automated status syncing.",
       "arguments": [
         {
@@ -954,7 +954,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkGitHubPR",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-git-hub-pr",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link a GitHub pull request to an issue. This creates a rich attachment using the workspace's GitHub integration, enabling features like automated status syncing.",
       "arguments": [
         {
@@ -1094,7 +1094,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkGitLabMR",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-git-lab-mr",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing GitLab MR to an issue. This creates a rich attachment using the workspace's GitLab integration, enabling features like automated status syncing.",
       "arguments": [
         {
@@ -1257,7 +1257,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkIntercom",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-intercom",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing Intercom conversation to an issue. This creates a rich attachment using the workspace's Intercom integration, enabling features like automated conversation updates.",
       "arguments": [
         {
@@ -1397,7 +1397,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkJiraIssue",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-jira-issue",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing Jira issue to an issue. This creates a rich attachment using the workspace's Jira integration, enabling features like automated status syncing.",
       "arguments": [
         {
@@ -1537,7 +1537,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkSalesforce",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-salesforce",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing Salesforce case to an issue. This creates a rich attachment using the workspace's Salesforce integration.",
       "arguments": [
         {
@@ -1662,7 +1662,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkSlack",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-slack",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing Slack message to an issue. This creates a rich attachment using the workspace's Slack integration.",
       "arguments": [
         {
@@ -1802,7 +1802,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkURL",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-url",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link any URL to an issue. If the workspace has a matching integration configured and the URL is recognized (e.g., Zendesk, GitHub, Slack), a rich attachment will be created that enables features like automated status updates. Otherwise, a basic attachment is created.",
       "arguments": [
         {
@@ -1927,7 +1927,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentLinkZendesk",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-link-zendesk",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Link an existing Zendesk ticket to an issue. This creates a rich attachment using the workspace's Zendesk integration, enabling features like automated ticket reopening when the Linear issue is completed.",
       "arguments": [
         {
@@ -2067,7 +2067,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentSyncToSlack",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-sync-to-slack",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Begin syncing the thread for an existing Slack message attachment with a comment thread on its issue.",
       "arguments": [
         {
@@ -2112,7 +2112,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "attachmentUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "attachment-update",
-      "entity": "AttachmentPayload",
+      "entity": "Attachment",
       "description": "Updates an existing issue attachment.",
       "arguments": [
         {
@@ -2177,7 +2177,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "commentCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "comment-create",
-      "entity": "CommentPayload",
+      "entity": "Comment",
       "description": "Creates a new comment.",
       "arguments": [
         {
@@ -2224,7 +2224,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "commentDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "comment-delete",
-      "entity": "DeletePayload",
+      "entity": "Comment",
       "description": "Deletes a comment.",
       "arguments": [
         {
@@ -2269,7 +2269,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "commentResolve",
       "cliCommand": "linear mutation",
       "cliSubcommand": "comment-resolve",
-      "entity": "CommentPayload",
+      "entity": "Comment",
       "description": "Resolves a comment.",
       "arguments": [
         {
@@ -2330,7 +2330,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "commentUnresolve",
       "cliCommand": "linear mutation",
       "cliSubcommand": "comment-unresolve",
-      "entity": "CommentPayload",
+      "entity": "Comment",
       "description": "Unresolves a comment.",
       "arguments": [
         {
@@ -2375,7 +2375,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "commentUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "comment-update",
-      "entity": "CommentPayload",
+      "entity": "Comment",
       "description": "Updates a comment.",
       "arguments": [
         {
@@ -2455,7 +2455,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "contactCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "contact-create",
-      "entity": "ContactPayload",
+      "entity": "Contact",
       "description": "Saves user message.",
       "arguments": [
         {
@@ -2502,7 +2502,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "contactSalesCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "contact-sales-create",
-      "entity": "ContactPayload",
+      "entity": "Contact",
       "description": "[INTERNAL] Saves sales pricing inquiry to Front.",
       "arguments": [
         {
@@ -2551,7 +2551,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "createCsvExportReport",
       "cliCommand": "linear mutation",
       "cliSubcommand": "create-csv-export-report",
-      "entity": "CreateCsvExportReportPayload",
+      "entity": "CsvExportReport",
       "description": "Create CSV export report for the organization.",
       "arguments": [
         {
@@ -2580,7 +2580,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlArgsSignature": "includePrivateTeamIds: [String!]",
       "positionalArgumentsUsage": "",
       "flagUsage": [
-        "--include-private-team-ids <json|@file>"
+        "--include-private-team-ids <value>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -2602,7 +2602,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "createInitiativeUpdateReminder",
       "cliCommand": "linear mutation",
       "cliSubcommand": "create-initiative-update-reminder",
-      "entity": "InitiativeUpdateReminderPayload",
+      "entity": "InitiativeUpdate",
       "description": "Create a notification to remind a user about an initiative update.",
       "arguments": [
         {
@@ -2664,7 +2664,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "createOrganizationFromOnboarding",
       "cliCommand": "linear mutation",
       "cliSubcommand": "create-organization-from-onboarding",
-      "entity": "CreateOrJoinOrganizationResponse",
+      "entity": "Organization",
       "description": "Creates an organization from onboarding.",
       "arguments": [
         {
@@ -2741,7 +2741,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "createProjectUpdateReminder",
       "cliCommand": "linear mutation",
       "cliSubcommand": "create-project-update-reminder",
-      "entity": "ProjectUpdateReminderPayload",
+      "entity": "ProjectUpdate",
       "description": "Create a notification to remind a user about a project update.",
       "arguments": [
         {
@@ -2803,7 +2803,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-create",
-      "entity": "CustomerPayload",
+      "entity": "Customer",
       "description": "Creates a new customer.",
       "arguments": [
         {
@@ -2850,7 +2850,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-delete",
-      "entity": "DeletePayload",
+      "entity": "Customer",
       "description": "Deletes a customer.",
       "arguments": [
         {
@@ -2895,7 +2895,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerMerge",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-merge",
-      "entity": "CustomerPayload",
+      "entity": "Customer",
       "description": "Merges two customers.",
       "arguments": [
         {
@@ -2961,7 +2961,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerNeedArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-need-archive",
-      "entity": "CustomerNeedArchivePayload",
+      "entity": "CustomerNeed",
       "description": "Archives a customer need.",
       "arguments": [
         {
@@ -3006,7 +3006,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerNeedCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-need-create",
-      "entity": "CustomerNeedPayload",
+      "entity": "CustomerNeed",
       "description": "Creates a new customer need.",
       "arguments": [
         {
@@ -3053,7 +3053,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerNeedCreateFromAttachment",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-need-create-from-attachment",
-      "entity": "CustomerNeedPayload",
+      "entity": "CustomerNeed",
       "description": "Creates a new customer need out of an attachment",
       "arguments": [
         {
@@ -3100,7 +3100,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerNeedDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-need-delete",
-      "entity": "DeletePayload",
+      "entity": "CustomerNeed",
       "description": "Deletes a customer need.",
       "arguments": [
         {
@@ -3161,7 +3161,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerNeedUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-need-unarchive",
-      "entity": "CustomerNeedArchivePayload",
+      "entity": "CustomerNeed",
       "description": "Unarchives a customer need.",
       "arguments": [
         {
@@ -3206,7 +3206,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerNeedUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-need-update",
-      "entity": "CustomerNeedUpdatePayload",
+      "entity": "CustomerNeed",
       "description": "Updates a customer need",
       "arguments": [
         {
@@ -3271,7 +3271,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerStatusCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-status-create",
-      "entity": "CustomerStatusPayload",
+      "entity": "CustomerStatus",
       "description": "Creates a new customer status.",
       "arguments": [
         {
@@ -3318,7 +3318,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerStatusDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-status-delete",
-      "entity": "DeletePayload",
+      "entity": "CustomerStatus",
       "description": "Deletes a customer status.",
       "arguments": [
         {
@@ -3363,7 +3363,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerStatusUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-status-update",
-      "entity": "CustomerStatusPayload",
+      "entity": "CustomerStatus",
       "description": "Updates a customer status.",
       "arguments": [
         {
@@ -3428,7 +3428,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerTierCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-tier-create",
-      "entity": "CustomerTierPayload",
+      "entity": "CustomerTier",
       "description": "Creates a new customer tier.",
       "arguments": [
         {
@@ -3475,7 +3475,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerTierDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-tier-delete",
-      "entity": "DeletePayload",
+      "entity": "CustomerTier",
       "description": "Deletes a customer tier.",
       "arguments": [
         {
@@ -3520,7 +3520,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerTierUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-tier-update",
-      "entity": "CustomerTierPayload",
+      "entity": "CustomerTier",
       "description": "Updates a customer tier.",
       "arguments": [
         {
@@ -3585,7 +3585,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerUnsync",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-unsync",
-      "entity": "CustomerPayload",
+      "entity": "Customer",
       "description": "Unsyncs a managed customer from the its current data source. External IDs mapping to the external source will be cleared.",
       "arguments": [
         {
@@ -3630,7 +3630,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-update",
-      "entity": "CustomerPayload",
+      "entity": "Customer",
       "description": "Updates a customer",
       "arguments": [
         {
@@ -3695,7 +3695,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customerUpsert",
       "cliCommand": "linear mutation",
       "cliSubcommand": "customer-upsert",
-      "entity": "CustomerPayload",
+      "entity": "Customer",
       "description": "Upserts a customer, creating it if it doesn't exists, updating it otherwise. Matches against an existing customer with `id` or `externalId`",
       "arguments": [
         {
@@ -3742,7 +3742,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customViewCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "custom-view-create",
-      "entity": "CustomViewPayload",
+      "entity": "CustomView",
       "description": "Creates a new custom view.",
       "arguments": [
         {
@@ -3789,7 +3789,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customViewDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "custom-view-delete",
-      "entity": "DeletePayload",
+      "entity": "CustomView",
       "description": "Deletes a custom view.",
       "arguments": [
         {
@@ -3834,7 +3834,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "customViewUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "custom-view-update",
-      "entity": "CustomViewPayload",
+      "entity": "CustomView",
       "description": "Updates a custom view.",
       "arguments": [
         {
@@ -3899,7 +3899,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "cycleArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "cycle-archive",
-      "entity": "CycleArchivePayload",
+      "entity": "Cycle",
       "description": "Archives a cycle.",
       "arguments": [
         {
@@ -3944,7 +3944,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "cycleCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "cycle-create",
-      "entity": "CyclePayload",
+      "entity": "Cycle",
       "description": "Creates a new cycle.",
       "arguments": [
         {
@@ -3991,7 +3991,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "cycleShiftAll",
       "cliCommand": "linear mutation",
       "cliSubcommand": "cycle-shift-all",
-      "entity": "CyclePayload",
+      "entity": "Cycle",
       "description": "Shifts all cycles starts and ends by a certain number of days, starting from the provided cycle onwards.",
       "arguments": [
         {
@@ -4038,7 +4038,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "cycleStartUpcomingCycleToday",
       "cliCommand": "linear mutation",
       "cliSubcommand": "cycle-start-upcoming-cycle-today",
-      "entity": "CyclePayload",
+      "entity": "Cycle",
       "description": "Shifts all cycles starts and ends by a certain number of days, starting from the provided cycle onwards.",
       "arguments": [
         {
@@ -4083,7 +4083,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "cycleUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "cycle-update",
-      "entity": "CyclePayload",
+      "entity": "Cycle",
       "description": "Updates a cycle.",
       "arguments": [
         {
@@ -4148,7 +4148,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "documentCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "document-create",
-      "entity": "DocumentPayload",
+      "entity": "Document",
       "description": "Creates a new document.",
       "arguments": [
         {
@@ -4195,7 +4195,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "documentDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "document-delete",
-      "entity": "DocumentArchivePayload",
+      "entity": "Document",
       "description": "Deletes (trashes) a document.",
       "arguments": [
         {
@@ -4240,7 +4240,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "documentUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "document-unarchive",
-      "entity": "DocumentArchivePayload",
+      "entity": "Document",
       "description": "Restores a document.",
       "arguments": [
         {
@@ -4285,7 +4285,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "documentUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "document-update",
-      "entity": "DocumentPayload",
+      "entity": "Document",
       "description": "Updates a document.",
       "arguments": [
         {
@@ -4350,7 +4350,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emailIntakeAddressCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "email-intake-address-create",
-      "entity": "EmailIntakeAddressPayload",
+      "entity": "EmailIntakeAddress",
       "description": "Creates a new email intake address.",
       "arguments": [
         {
@@ -4397,7 +4397,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emailIntakeAddressDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "email-intake-address-delete",
-      "entity": "DeletePayload",
+      "entity": "EmailIntakeAddress",
       "description": "Deletes an email intake address object.",
       "arguments": [
         {
@@ -4442,7 +4442,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emailIntakeAddressRotate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "email-intake-address-rotate",
-      "entity": "EmailIntakeAddressPayload",
+      "entity": "EmailIntakeAddress",
       "description": "Rotates an existing email intake address.",
       "arguments": [
         {
@@ -4487,7 +4487,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emailIntakeAddressUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "email-intake-address-update",
-      "entity": "EmailIntakeAddressPayload",
+      "entity": "EmailIntakeAddress",
       "description": "Updates an existing email intake address.",
       "arguments": [
         {
@@ -4552,7 +4552,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emailTokenUserAccountAuth",
       "cliCommand": "linear mutation",
       "cliSubcommand": "email-token-user-account-auth",
-      "entity": "AuthResolverResponse",
+      "entity": "Auth",
       "description": "Authenticates a user account via email and authentication token.",
       "arguments": [
         {
@@ -4599,7 +4599,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emailUnsubscribe",
       "cliCommand": "linear mutation",
       "cliSubcommand": "email-unsubscribe",
-      "entity": "EmailUnsubscribePayload",
+      "entity": "EmailSubscription",
       "description": "Unsubscribes the user from one type of email.",
       "arguments": [
         {
@@ -4646,7 +4646,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emailUserAccountAuthChallenge",
       "cliCommand": "linear mutation",
       "cliSubcommand": "email-user-account-auth-challenge",
-      "entity": "EmailUserAccountAuthChallengeResponse",
+      "entity": "Auth",
       "description": "Finds or creates a new user account by email and sends an email with token.",
       "arguments": [
         {
@@ -4693,7 +4693,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emojiCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "emoji-create",
-      "entity": "EmojiPayload",
+      "entity": "Emoji",
       "description": "Creates a custom emoji.",
       "arguments": [
         {
@@ -4740,7 +4740,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "emojiDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "emoji-delete",
-      "entity": "DeletePayload",
+      "entity": "Emoji",
       "description": "Deletes an emoji.",
       "arguments": [
         {
@@ -4785,7 +4785,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "entityExternalLinkCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "entity-external-link-create",
-      "entity": "EntityExternalLinkPayload",
+      "entity": "EntityExternalLink",
       "description": "Creates a new entity link.",
       "arguments": [
         {
@@ -4832,7 +4832,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "entityExternalLinkDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "entity-external-link-delete",
-      "entity": "DeletePayload",
+      "entity": "EntityExternalLink",
       "description": "Deletes an entity link.",
       "arguments": [
         {
@@ -4877,7 +4877,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "entityExternalLinkUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "entity-external-link-update",
-      "entity": "EntityExternalLinkPayload",
+      "entity": "EntityExternalLink",
       "description": "Updates an entity link.",
       "arguments": [
         {
@@ -4942,7 +4942,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "favoriteCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "favorite-create",
-      "entity": "FavoritePayload",
+      "entity": "Favorite",
       "description": "Creates a new favorite (project, cycle etc).",
       "arguments": [
         {
@@ -4989,7 +4989,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "favoriteDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "favorite-delete",
-      "entity": "DeletePayload",
+      "entity": "Favorite",
       "description": "Deletes a favorite reference.",
       "arguments": [
         {
@@ -5034,7 +5034,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "favoriteUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "favorite-update",
-      "entity": "FavoritePayload",
+      "entity": "Favorite",
       "description": "Updates a favorite.",
       "arguments": [
         {
@@ -5099,7 +5099,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "fileUpload",
       "cliCommand": "linear mutation",
       "cliSubcommand": "file-upload",
-      "entity": "UploadPayload",
+      "entity": "FileUpload",
       "description": "XHR request payload to upload an images, video and other attachments directly to Linear's cloud storage.",
       "arguments": [
         {
@@ -5191,7 +5191,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
         "--content-type <value>",
         "--filename <value>",
         "--make-public",
-        "--meta-data <json|@file>",
+        "--meta-data <value>",
         "--size <value>"
       ],
       "returnType": {
@@ -5214,7 +5214,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "fileUploadDangerouslyDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "file-upload-dangerously-delete",
-      "entity": "FileUploadDeletePayload",
+      "entity": "FileUpload",
       "description": "[INTERNAL] Permanently delete an uploaded file by asset URL. This should be used as a last resort and will break comments and documents that reference the asset.",
       "arguments": [
         {
@@ -5263,7 +5263,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "gitAutomationStateCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "git-automation-state-create",
-      "entity": "GitAutomationStatePayload",
+      "entity": "GitAutomationState",
       "description": "Creates a new automation state.",
       "arguments": [
         {
@@ -5310,7 +5310,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "gitAutomationStateDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "git-automation-state-delete",
-      "entity": "DeletePayload",
+      "entity": "GitAutomationState",
       "description": "Archives an automation state.",
       "arguments": [
         {
@@ -5355,7 +5355,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "gitAutomationStateUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "git-automation-state-update",
-      "entity": "GitAutomationStatePayload",
+      "entity": "GitAutomationState",
       "description": "Updates an existing state.",
       "arguments": [
         {
@@ -5420,7 +5420,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "gitAutomationTargetBranchCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "git-automation-target-branch-create",
-      "entity": "GitAutomationTargetBranchPayload",
+      "entity": "GitAutomationTargetBranch",
       "description": "Creates a Git target branch automation.",
       "arguments": [
         {
@@ -5467,7 +5467,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "gitAutomationTargetBranchDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "git-automation-target-branch-delete",
-      "entity": "DeletePayload",
+      "entity": "GitAutomationTargetBranch",
       "description": "Archives a Git target branch automation.",
       "arguments": [
         {
@@ -5512,7 +5512,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "gitAutomationTargetBranchUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "git-automation-target-branch-update",
-      "entity": "GitAutomationTargetBranchPayload",
+      "entity": "GitAutomationTargetBranch",
       "description": "Updates an existing Git target branch automation.",
       "arguments": [
         {
@@ -5577,7 +5577,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "googleUserAccountAuth",
       "cliCommand": "linear mutation",
       "cliSubcommand": "google-user-account-auth",
-      "entity": "AuthResolverResponse",
+      "entity": "Auth",
       "description": "Authenticate user account through Google OAuth. This is the 2nd step of OAuth flow.",
       "arguments": [
         {
@@ -5624,7 +5624,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "imageUploadFromUrl",
       "cliCommand": "linear mutation",
       "cliSubcommand": "image-upload-from-url",
-      "entity": "ImageUploadFromUrlPayload",
+      "entity": "FileUpload",
       "description": "Upload an image from an URL to Linear.",
       "arguments": [
         {
@@ -5671,7 +5671,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "importFileUpload",
       "cliCommand": "linear mutation",
       "cliSubcommand": "import-file-upload",
-      "entity": "UploadPayload",
+      "entity": "FileUpload",
       "description": "XHR request payload to upload a file for import, directly to Linear's cloud storage.",
       "arguments": [
         {
@@ -5748,7 +5748,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "flagUsage": [
         "--content-type <value>",
         "--filename <value>",
-        "--meta-data <json|@file>",
+        "--meta-data <value>",
         "--size <value>"
       ],
       "returnType": {
@@ -5771,7 +5771,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-archive",
-      "entity": "InitiativeArchivePayload",
+      "entity": "Initiative",
       "description": "Archives a initiative.",
       "arguments": [
         {
@@ -5816,7 +5816,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-create",
-      "entity": "InitiativePayload",
+      "entity": "Initiative",
       "description": "Creates a new initiative.",
       "arguments": [
         {
@@ -5863,7 +5863,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-delete",
-      "entity": "DeletePayload",
+      "entity": "Initiative",
       "description": "Deletes (trashes) an initiative.",
       "arguments": [
         {
@@ -5908,7 +5908,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeRelationCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-relation-create",
-      "entity": "InitiativeRelationPayload",
+      "entity": "InitiativeRelation",
       "description": "Creates a new initiative relation.",
       "arguments": [
         {
@@ -5955,7 +5955,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeRelationDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-relation-delete",
-      "entity": "DeletePayload",
+      "entity": "InitiativeRelation",
       "description": "Deletes an initiative relation.",
       "arguments": [
         {
@@ -6000,7 +6000,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeRelationUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-relation-update",
-      "entity": "DeletePayload",
+      "entity": "InitiativeRelation",
       "description": "Updates an initiative relation.",
       "arguments": [
         {
@@ -6065,7 +6065,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeToProjectCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-to-project-create",
-      "entity": "InitiativeToProjectPayload",
+      "entity": "InitiativeToProject",
       "description": "Creates a new initiativeToProject join.",
       "arguments": [
         {
@@ -6112,7 +6112,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeToProjectDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-to-project-delete",
-      "entity": "DeletePayload",
+      "entity": "InitiativeToProject",
       "description": "Deletes a initiativeToProject.",
       "arguments": [
         {
@@ -6157,7 +6157,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeToProjectUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-to-project-update",
-      "entity": "InitiativeToProjectPayload",
+      "entity": "InitiativeToProject",
       "description": "Updates a initiativeToProject.",
       "arguments": [
         {
@@ -6222,7 +6222,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-unarchive",
-      "entity": "InitiativeArchivePayload",
+      "entity": "Initiative",
       "description": "Unarchives a initiative.",
       "arguments": [
         {
@@ -6267,7 +6267,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-update",
-      "entity": "InitiativePayload",
+      "entity": "Initiative",
       "description": "Updates a initiative.",
       "arguments": [
         {
@@ -6332,7 +6332,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeUpdateArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-update-archive",
-      "entity": "InitiativeUpdateArchivePayload",
+      "entity": "InitiativeUpdate",
       "description": "Archives an initiative update.",
       "arguments": [
         {
@@ -6377,7 +6377,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeUpdateCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-update-create",
-      "entity": "InitiativeUpdatePayload",
+      "entity": "InitiativeUpdate",
       "description": "Creates a initiative update.",
       "arguments": [
         {
@@ -6424,7 +6424,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeUpdateUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-update-unarchive",
-      "entity": "InitiativeUpdateArchivePayload",
+      "entity": "InitiativeUpdate",
       "description": "Unarchives an initiative update.",
       "arguments": [
         {
@@ -6469,7 +6469,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "initiativeUpdateUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "initiative-update-update",
-      "entity": "InitiativeUpdatePayload",
+      "entity": "InitiativeUpdate",
       "description": "Updates an update.",
       "arguments": [
         {
@@ -6534,7 +6534,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-archive",
-      "entity": "DeletePayload",
+      "entity": "Integration",
       "description": "Archives an integration.",
       "arguments": [
         {
@@ -6579,7 +6579,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationAsksConnectChannel",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-asks-connect-channel",
-      "entity": "AsksChannelConnectPayload",
+      "entity": "Integration",
       "description": "Connect a Slack channel to Asks.",
       "arguments": [
         {
@@ -6645,7 +6645,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationCustomerDataAttributesRefresh",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-customer-data-attributes-refresh",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Refreshes the customer data attributes from the specified integration service.",
       "arguments": [
         {
@@ -6694,7 +6694,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-delete",
-      "entity": "DeletePayload",
+      "entity": "Integration",
       "description": "Deletes an integration.",
       "arguments": [
         {
@@ -6755,7 +6755,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationDiscord",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-discord",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Discord.",
       "arguments": [
         {
@@ -6821,7 +6821,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationFigma",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-figma",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Figma.",
       "arguments": [
         {
@@ -6887,7 +6887,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationFront",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-front",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Front.",
       "arguments": [
         {
@@ -6953,7 +6953,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGithubCommitCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-github-commit-create",
-      "entity": "GitHubCommitIntegrationPayload",
+      "entity": "Integration",
       "description": "Generates a webhook for the GitHub commit integration.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -6979,7 +6979,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGithubConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-github-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Connects the organization with the GitHub App.",
       "arguments": [
         {
@@ -7051,7 +7051,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "positionalArgumentsUsage": "",
       "flagUsage": [
         "--code <value>",
-        "--code-access",
+        "--code-access <json|@file>",
         "--github-host <value>",
         "--installation-id <value>"
       ],
@@ -7075,7 +7075,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGitHubEnterpriseServerConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-git-hub-enterprise-server-connect",
-      "entity": "GitHubEnterpriseServerPayload",
+      "entity": "Integration",
       "description": "Connects the organization with a GitHub Enterprise Server.",
       "arguments": [
         {
@@ -7141,7 +7141,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGithubImportConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-github-import-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Connects the organization with the GitHub Import App.",
       "arguments": [
         {
@@ -7207,7 +7207,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGithubImportRefresh",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-github-import-refresh",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Refreshes the data for a GitHub import integration.",
       "arguments": [
         {
@@ -7252,7 +7252,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGitHubPersonal",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-git-hub-personal",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Connect your GitHub account to Linear.",
       "arguments": [
         {
@@ -7314,7 +7314,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGitlabConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-gitlab-connect",
-      "entity": "GitLabIntegrationCreatePayload",
+      "entity": "Integration",
       "description": "Connects the organization with a GitLab Access Token.",
       "arguments": [
         {
@@ -7380,7 +7380,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGitlabTestConnection",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-gitlab-test-connection",
-      "entity": "GitLabTestConnectionPayload",
+      "entity": "Integration",
       "description": "Tests connectivity to a self-hosted GitLab instance and clears auth errors if successful.",
       "arguments": [
         {
@@ -7427,7 +7427,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGong",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-gong",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Gong.",
       "arguments": [
         {
@@ -7493,7 +7493,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGoogleCalendarPersonalConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-google-calendar-personal-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[Internal] Connects the Google Calendar to the user to this Linear account via OAuth2.",
       "arguments": [
         {
@@ -7542,7 +7542,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationGoogleSheets",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-google-sheets",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Google Sheets.",
       "arguments": [
         {
@@ -7589,7 +7589,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationIntercom",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-intercom",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Intercom.",
       "arguments": [
         {
@@ -7670,7 +7670,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationIntercomDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-intercom-delete",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Disconnects the organization from Intercom.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -7696,7 +7696,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationIntercomSettingsUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-intercom-settings-update",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[DEPRECATED] Updates settings on the Intercom integration.",
       "arguments": [
         {
@@ -7745,7 +7745,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationJiraFetchProjectStatuses",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-jira-fetch-project-statuses",
-      "entity": "JiraFetchProjectStatusesPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Fetches Jira project statuses and stores them in integration settings.",
       "arguments": [
         {
@@ -7794,7 +7794,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationJiraPersonal",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-jira-personal",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Connect your Jira account to Linear.",
       "arguments": [
         {
@@ -7852,7 +7852,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationJiraUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-jira-update",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Updates a Jira Integration.",
       "arguments": [
         {
@@ -7901,7 +7901,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationLaunchDarklyConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-launch-darkly-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Integrates the organization with LaunchDarkly.",
       "arguments": [
         {
@@ -7988,7 +7988,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationLaunchDarklyPersonalConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-launch-darkly-personal-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Integrates your personal account with LaunchDarkly.",
       "arguments": [
         {
@@ -8037,7 +8037,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationLoom",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-loom",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Enables Loom integration for the organization.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -8065,7 +8065,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationMcpServerConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-mcp-server-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Connects the workspace with an MCP server.",
       "arguments": [
         {
@@ -8129,7 +8129,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationMcpServerPersonalConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-mcp-server-personal-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Connects the user's personal account with an MCP server.",
       "arguments": [
         {
@@ -8178,7 +8178,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationMicrosoftPersonalConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-microsoft-personal-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[ALPHA] Connects the user's personal Microsoft account to Linear.",
       "arguments": [
         {
@@ -8246,7 +8246,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationMicrosoftTeams",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-microsoft-teams",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[ALPHA] Integrates the organization with Microsoft Teams.",
       "arguments": [
         {
@@ -8314,7 +8314,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationOpsgenieConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-opsgenie-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Integrates the organization with Opsgenie.",
       "arguments": [
         {
@@ -8363,7 +8363,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationOpsgenieRefreshScheduleMappings",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-opsgenie-refresh-schedule-mappings",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Refresh Opsgenie schedule mappings.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -8391,7 +8391,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationPagerDutyConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-pager-duty-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Integrates the organization with PagerDuty.",
       "arguments": [
         {
@@ -8459,7 +8459,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationPagerDutyRefreshScheduleMappings",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-pager-duty-refresh-schedule-mappings",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Refresh PagerDuty schedule mappings.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -8487,7 +8487,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationRequest",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-request",
-      "entity": "IntegrationRequestPayload",
+      "entity": "Integration",
       "description": "Requests a currently unavailable integration.",
       "arguments": [
         {
@@ -8534,7 +8534,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSalesforce",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-salesforce",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Salesforce.",
       "arguments": [
         {
@@ -8619,7 +8619,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSalesforceMetadataRefresh",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-salesforce-metadata-refresh",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Refreshes the Salesforce integration metadata.",
       "arguments": [
         {
@@ -8666,7 +8666,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSentryConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-sentry-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Sentry.",
       "arguments": [
         {
@@ -8751,7 +8751,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSettingsUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-settings-update",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Updates the integration settings.",
       "arguments": [
         {
@@ -8807,8 +8807,8 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       },
       "returnTypeSignature": "IntegrationPayload!",
       "tags": [
-        "deprecated",
-        "internal"
+        "internal",
+        "deprecated"
       ],
       "deprecatedReason": "Use integrationUpdate instead.",
       "sourceLine": 20332,
@@ -8819,7 +8819,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlack",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Slack.",
       "arguments": [
         {
@@ -8860,7 +8860,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
         },
         {
           "graphqlName": "shouldUseV2Auth",
-          "cliFlag": "--should-use-v2-auth",
+          "cliFlag": "--should-use-v-2-auth",
           "positionalName": null,
           "description": "[DEPRECATED] Whether or not v2 of Slack OAuth should be used. No longer used.",
           "kind": "scalar",
@@ -8878,7 +8878,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "flagUsage": [
         "--code <value>",
         "--redirect-uri <value>",
-        "--should-use-v2-auth"
+        "--should-use-v-2-auth"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -8900,7 +8900,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackAsks",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-asks",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with the Slack Asks app.",
       "arguments": [
         {
@@ -8966,7 +8966,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackCustomerChannelLink",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-customer-channel-link",
-      "entity": "SuccessPayload",
+      "entity": "IntegrationSlackCustomerChannel",
       "description": "Integrates a Slack Asks channel with a Customer.",
       "arguments": [
         {
@@ -9051,7 +9051,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackCustomViewNotifications",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-custom-view-notifications",
-      "entity": "SlackChannelConnectPayload",
+      "entity": "Integration",
       "description": "Slack integration for custom view notifications.",
       "arguments": [
         {
@@ -9136,7 +9136,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackImportEmojis",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-import-emojis",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Imports custom emojis from your Slack workspace.",
       "arguments": [
         {
@@ -9202,7 +9202,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackInitiativePost",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-initiative-post",
-      "entity": "SlackChannelConnectPayload",
+      "entity": "Integration",
       "description": "[Internal] Slack integration for initiative notifications.",
       "arguments": [
         {
@@ -9289,7 +9289,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackOrAsksUpdateSlackTeamName",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-or-asks-update-slack-team-name",
-      "entity": "IntegrationSlackWorkspaceNamePayload",
+      "entity": "IntegrationSlackOrAsks",
       "description": "Updates the Slack team's name in Linear for an existing Slack or Asks integration.",
       "arguments": [
         {
@@ -9336,7 +9336,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackOrgInitiativeUpdatesPost",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-org-initiative-updates-post",
-      "entity": "SlackChannelConnectPayload",
+      "entity": "Integration",
       "description": "[Internal] Slack integration for organization level initiative update notifications.",
       "arguments": [
         {
@@ -9404,7 +9404,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackOrgProjectUpdatesPost",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-org-project-updates-post",
-      "entity": "SlackChannelConnectPayload",
+      "entity": "Integration",
       "description": "Slack integration for organization level project update notifications.",
       "arguments": [
         {
@@ -9470,7 +9470,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackPersonal",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-personal",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates your personal notifications with Slack.",
       "arguments": [
         {
@@ -9536,7 +9536,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackPost",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-post",
-      "entity": "SlackChannelConnectPayload",
+      "entity": "Integration",
       "description": "Slack integration for team notifications.",
       "arguments": [
         {
@@ -9577,7 +9577,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
         },
         {
           "graphqlName": "shouldUseV2Auth",
-          "cliFlag": "--should-use-v2-auth",
+          "cliFlag": "--should-use-v-2-auth",
           "positionalName": null,
           "description": "[DEPRECATED] Whether or not v2 of Slack OAuth should be used. No longer used.",
           "kind": "scalar",
@@ -9613,7 +9613,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "flagUsage": [
         "--code <value>",
         "--redirect-uri <value>",
-        "--should-use-v2-auth",
+        "--should-use-v-2-auth",
         "--team-id <value>"
       ],
       "returnType": {
@@ -9636,7 +9636,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackProjectPost",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-project-post",
-      "entity": "SlackChannelConnectPayload",
+      "entity": "Integration",
       "description": "Slack integration for project notifications.",
       "arguments": [
         {
@@ -9740,7 +9740,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationSlackWorkflowAccessUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-slack-workflow-access-update",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[Internal] Enables Linear Agent Slack workflow access for a Slack or Slack Asks integration.",
       "arguments": [
         {
@@ -9808,7 +9808,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationsSettingsCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integrations-settings-create",
-      "entity": "IntegrationsSettingsPayload",
+      "entity": "IntegrationsSettings",
       "description": "Creates new settings for one or more integrations.",
       "arguments": [
         {
@@ -9855,7 +9855,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationsSettingsUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integrations-settings-update",
-      "entity": "IntegrationsSettingsPayload",
+      "entity": "IntegrationsSettings",
       "description": "Updates settings related to integrations for a project or a team.",
       "arguments": [
         {
@@ -9920,7 +9920,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationTemplateCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-template-create",
-      "entity": "IntegrationTemplatePayload",
+      "entity": "IntegrationTemplate",
       "description": "Creates a new integrationTemplate join.",
       "arguments": [
         {
@@ -9967,7 +9967,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationTemplateDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-template-delete",
-      "entity": "DeletePayload",
+      "entity": "IntegrationTemplate",
       "description": "Deletes a integrationTemplate.",
       "arguments": [
         {
@@ -10012,7 +10012,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-update",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Updates the integration.",
       "arguments": [
         {
@@ -10079,7 +10079,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "integrationZendesk",
       "cliCommand": "linear mutation",
       "cliSubcommand": "integration-zendesk",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Integrates the organization with Zendesk.",
       "arguments": [
         {
@@ -10183,7 +10183,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueAddLabel",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-add-label",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Adds a label to an issue.",
       "arguments": [
         {
@@ -10248,7 +10248,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-archive",
-      "entity": "IssueArchivePayload",
+      "entity": "Issue",
       "description": "Archives an issue.",
       "arguments": [
         {
@@ -10309,7 +10309,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueBatchCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-batch-create",
-      "entity": "IssueBatchPayload",
+      "entity": "Issue",
       "description": "Creates a list of issues in one transaction.",
       "arguments": [
         {
@@ -10356,7 +10356,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueBatchUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-batch-update",
-      "entity": "IssueBatchPayload",
+      "entity": "Issue",
       "description": "Updates multiple issues at once.",
       "arguments": [
         {
@@ -10407,7 +10407,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlArgsSignature": "ids: [UUID!]!, input: IssueUpdateInput!",
       "positionalArgumentsUsage": "",
       "flagUsage": [
-        "--ids <json|@file>",
+        "--ids <value>",
         "--input <json|@file>"
       ],
       "returnType": {
@@ -10430,7 +10430,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-create",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Creates a new issue.",
       "arguments": [
         {
@@ -10477,7 +10477,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-delete",
-      "entity": "IssueArchivePayload",
+      "entity": "Issue",
       "description": "Deletes (trashes) an issue.",
       "arguments": [
         {
@@ -10538,7 +10538,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueDescriptionUpdateFromFront",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-description-update-from-front",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "[INTERNAL] Updates an issue description from the Front app to handle Front attachments correctly.",
       "arguments": [
         {
@@ -10605,7 +10605,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueExternalSyncDisable",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-external-sync-disable",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Disables external sync on an issue.",
       "arguments": [
         {
@@ -10652,7 +10652,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportCreateAsana",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-create-asana",
-      "entity": "IssueImportPayload",
+      "entity": "IssueImport",
       "description": "Kicks off an Asana import job.",
       "arguments": [
         {
@@ -10792,7 +10792,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportCreateClubhouse",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-create-clubhouse",
-      "entity": "IssueImportPayload",
+      "entity": "IssueImport",
       "description": "Kicks off a Shortcut (formerly Clubhouse) import job.",
       "arguments": [
         {
@@ -10932,7 +10932,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportCreateCSVJira",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-create-csv-jira",
-      "entity": "IssueImportPayload",
+      "entity": "IssueImport",
       "description": "Kicks off a Jira import job from a CSV.",
       "arguments": [
         {
@@ -11054,7 +11054,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportCreateGithub",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-create-github",
-      "entity": "IssueImportPayload",
+      "entity": "IssueImport",
       "description": "Kicks off a GitHub import job.",
       "arguments": [
         {
@@ -11161,8 +11161,8 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlArgsSignature": "githubLabels: [String!], githubRepoIds: [Int!], includeClosedIssues: Boolean, instantProcess: Boolean, teamId: String, teamName: String",
       "positionalArgumentsUsage": "",
       "flagUsage": [
-        "--github-labels <json|@file>",
-        "--github-repo-ids <json|@file>",
+        "--github-labels <value>",
+        "--github-repo-ids <value>",
         "--include-closed-issues",
         "--instant-process",
         "--team-id <value>",
@@ -11188,7 +11188,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportCreateJira",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-create-jira",
-      "entity": "IssueImportPayload",
+      "entity": "IssueImport",
       "description": "Kicks off a Jira import job.",
       "arguments": [
         {
@@ -11380,8 +11380,8 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "kind": "mutation",
       "graphqlName": "issueImportCreateLinearV2",
       "cliCommand": "linear mutation",
-      "cliSubcommand": "issue-import-create-linear-v2",
-      "entity": "IssueImportPayload",
+      "cliSubcommand": "issue-import-create-linear-v-2",
+      "entity": "IssueImport",
       "description": "[INTERNAL] Kicks off a Linear to Linear import job.",
       "arguments": [
         {
@@ -11444,7 +11444,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-delete",
-      "entity": "IssueImportDeletePayload",
+      "entity": "IssueImport",
       "description": "Deletes an import job.",
       "arguments": [
         {
@@ -11491,7 +11491,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportProcess",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-process",
-      "entity": "IssueImportPayload",
+      "entity": "IssueImport",
       "description": "Kicks off import processing.",
       "arguments": [
         {
@@ -11535,7 +11535,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "positionalArgumentsUsage": "",
       "flagUsage": [
         "--issue-import-id <value>",
-        "--mapping <json|@file>"
+        "--mapping <value>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -11557,7 +11557,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueImportUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-import-update",
-      "entity": "IssueImportPayload",
+      "entity": "IssueImport",
       "description": "Updates the mapping for the issue import.",
       "arguments": [
         {
@@ -11622,7 +11622,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueLabelCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-label-create",
-      "entity": "IssueLabelPayload",
+      "entity": "IssueLabel",
       "description": "Creates a new label.",
       "arguments": [
         {
@@ -11684,7 +11684,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueLabelDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-label-delete",
-      "entity": "DeletePayload",
+      "entity": "IssueLabel",
       "description": "Deletes an issue label.",
       "arguments": [
         {
@@ -11729,7 +11729,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueLabelRestore",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-label-restore",
-      "entity": "IssueLabelPayload",
+      "entity": "IssueLabel",
       "description": "Restores a label.",
       "arguments": [
         {
@@ -11774,7 +11774,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueLabelRetire",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-label-retire",
-      "entity": "IssueLabelPayload",
+      "entity": "IssueLabel",
       "description": "Retires a label.",
       "arguments": [
         {
@@ -11819,7 +11819,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueLabelUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-label-update",
-      "entity": "IssueLabelPayload",
+      "entity": "IssueLabel",
       "description": "Updates a label.",
       "arguments": [
         {
@@ -11899,7 +11899,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueRelationCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-relation-create",
-      "entity": "IssueRelationPayload",
+      "entity": "IssueRelation",
       "description": "Creates a new issue relation.",
       "arguments": [
         {
@@ -11961,7 +11961,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueRelationDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-relation-delete",
-      "entity": "DeletePayload",
+      "entity": "IssueRelation",
       "description": "Deletes an issue relation.",
       "arguments": [
         {
@@ -12006,7 +12006,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueRelationUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-relation-update",
-      "entity": "IssueRelationPayload",
+      "entity": "IssueRelation",
       "description": "Updates an issue relation.",
       "arguments": [
         {
@@ -12071,7 +12071,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueReminder",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-reminder",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Adds an issue reminder. Will cause a notification to be sent when the issue reminder time is reached.",
       "arguments": [
         {
@@ -12136,7 +12136,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueRemoveLabel",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-remove-label",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Removes a label from an issue.",
       "arguments": [
         {
@@ -12201,7 +12201,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueSubscribe",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-subscribe",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Subscribes a user to an issue.",
       "arguments": [
         {
@@ -12277,7 +12277,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueToReleaseCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-to-release-create",
-      "entity": "IssueToReleasePayload",
+      "entity": "IssueToRelease",
       "description": "[ALPHA] Creates a new issueToRelease join, adding an issue to a release.",
       "arguments": [
         {
@@ -12326,7 +12326,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueToReleaseDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-to-release-delete",
-      "entity": "DeletePayload",
+      "entity": "IssueToRelease",
       "description": "[ALPHA] Deletes an issueToRelease by its identifier, removing an issue from a release.",
       "arguments": [
         {
@@ -12373,7 +12373,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueToReleaseDeleteByIssueAndRelease",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-to-release-delete-by-issue-and-release",
-      "entity": "DeletePayload",
+      "entity": "IssueToRelease",
       "description": "[ALPHA] Deletes an issueToRelease by issue and release identifiers",
       "arguments": [
         {
@@ -12441,7 +12441,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-unarchive",
-      "entity": "IssueArchivePayload",
+      "entity": "Issue",
       "description": "Unarchives an issue.",
       "arguments": [
         {
@@ -12486,7 +12486,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueUnsubscribe",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-unsubscribe",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Unsubscribes a user from an issue.",
       "arguments": [
         {
@@ -12562,7 +12562,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "issueUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "issue-update",
-      "entity": "IssuePayload",
+      "entity": "Issue",
       "description": "Updates an issue.",
       "arguments": [
         {
@@ -12627,7 +12627,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "jiraIntegrationConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "jira-integration-connect",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[INTERNAL] Connects the organization with a Jira Personal Access Token.",
       "arguments": [
         {
@@ -12676,7 +12676,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "joinOrganizationFromOnboarding",
       "cliCommand": "linear mutation",
       "cliSubcommand": "join-organization-from-onboarding",
-      "entity": "CreateOrJoinOrganizationResponse",
+      "entity": "Organization",
       "description": "Join an organization from onboarding.",
       "arguments": [
         {
@@ -12723,7 +12723,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "leaveOrganization",
       "cliCommand": "linear mutation",
       "cliSubcommand": "leave-organization",
-      "entity": "CreateOrJoinOrganizationResponse",
+      "entity": "Organization",
       "description": "Leave an organization.",
       "arguments": [
         {
@@ -12770,7 +12770,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "logout",
       "cliCommand": "linear mutation",
       "cliSubcommand": "logout",
-      "entity": "LogoutResponse",
+      "entity": "Session",
       "description": "Logout the client.",
       "arguments": [
         {
@@ -12813,7 +12813,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "logoutAllSessions",
       "cliCommand": "linear mutation",
       "cliSubcommand": "logout-all-sessions",
-      "entity": "LogoutResponse",
+      "entity": "Session",
       "description": "Logout all of user's sessions including the active one.",
       "arguments": [
         {
@@ -12856,7 +12856,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "logoutOtherSessions",
       "cliCommand": "linear mutation",
       "cliSubcommand": "logout-other-sessions",
-      "entity": "LogoutResponse",
+      "entity": "Session",
       "description": "Logout all of user's sessions excluding the current one.",
       "arguments": [
         {
@@ -12899,7 +12899,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "logoutSession",
       "cliCommand": "linear mutation",
       "cliSubcommand": "logout-session",
-      "entity": "LogoutResponse",
+      "entity": "Session",
       "description": "Logout an individual session with its ID.",
       "arguments": [
         {
@@ -12946,7 +12946,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-archive",
-      "entity": "NotificationArchivePayload",
+      "entity": "Notification",
       "description": "Archives a notification.",
       "arguments": [
         {
@@ -12991,7 +12991,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationArchiveAll",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-archive-all",
-      "entity": "NotificationBatchActionPayload",
+      "entity": "Notification",
       "description": "Archives a notification and all related notifications.",
       "arguments": [
         {
@@ -13038,7 +13038,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationCategoryChannelSubscriptionUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-category-channel-subscription-update",
-      "entity": "UserSettingsPayload",
+      "entity": "UserSettings",
       "description": "Subscribes to or unsubscribes from a notification category for a given notification channel for the user",
       "arguments": [
         {
@@ -13123,7 +13123,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationMarkReadAll",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-mark-read-all",
-      "entity": "NotificationBatchActionPayload",
+      "entity": "Notification",
       "description": "Marks notification and all related notifications as read.",
       "arguments": [
         {
@@ -13189,7 +13189,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationMarkUnreadAll",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-mark-unread-all",
-      "entity": "NotificationBatchActionPayload",
+      "entity": "Notification",
       "description": "Marks notification and all related notifications as unread.",
       "arguments": [
         {
@@ -13236,7 +13236,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationSnoozeAll",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-snooze-all",
-      "entity": "NotificationBatchActionPayload",
+      "entity": "Notification",
       "description": "Snoozes a notification and all related notifications.",
       "arguments": [
         {
@@ -13302,7 +13302,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationSubscriptionCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-subscription-create",
-      "entity": "NotificationSubscriptionPayload",
+      "entity": "NotificationSubscription",
       "description": "Creates a new notification subscription for a cycle, custom view, label, project or team.",
       "arguments": [
         {
@@ -13349,7 +13349,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationSubscriptionDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-subscription-delete",
-      "entity": "DeletePayload",
+      "entity": "NotificationSubscription",
       "description": "Deletes a notification subscription reference.",
       "arguments": [
         {
@@ -13396,7 +13396,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationSubscriptionUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-subscription-update",
-      "entity": "NotificationSubscriptionPayload",
+      "entity": "NotificationSubscription",
       "description": "Updates a notification subscription.",
       "arguments": [
         {
@@ -13461,7 +13461,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-unarchive",
-      "entity": "NotificationArchivePayload",
+      "entity": "Notification",
       "description": "Unarchives a notification.",
       "arguments": [
         {
@@ -13506,7 +13506,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationUnsnoozeAll",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-unsnooze-all",
-      "entity": "NotificationBatchActionPayload",
+      "entity": "Notification",
       "description": "Unsnoozes a notification and all related notifications.",
       "arguments": [
         {
@@ -13572,7 +13572,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "notificationUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "notification-update",
-      "entity": "NotificationPayload",
+      "entity": "Notification",
       "description": "Updates a notification.",
       "arguments": [
         {
@@ -13637,7 +13637,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationCancelDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-cancel-delete",
-      "entity": "OrganizationCancelDeletePayload",
+      "entity": "Organization",
       "description": "Cancels the deletion of an organization.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -13663,7 +13663,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-delete",
-      "entity": "OrganizationDeletePayload",
+      "entity": "Organization",
       "description": "Deletes an organization.",
       "arguments": [
         {
@@ -13710,7 +13710,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationDeleteChallenge",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-delete-challenge",
-      "entity": "OrganizationDeletePayload",
+      "entity": "Organization",
       "description": "Get an organization's delete confirmation token.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -13736,7 +13736,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationDomainClaim",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-domain-claim",
-      "entity": "OrganizationDomainSimplePayload",
+      "entity": "OrganizationDomain",
       "description": "[INTERNAL] Verifies a domain claim.",
       "arguments": [
         {
@@ -13783,7 +13783,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationDomainCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-domain-create",
-      "entity": "OrganizationDomainPayload",
+      "entity": "OrganizationDomain",
       "description": "[INTERNAL] Adds a domain to be allowed for an organization.",
       "arguments": [
         {
@@ -13847,7 +13847,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationDomainDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-domain-delete",
-      "entity": "DeletePayload",
+      "entity": "OrganizationDomain",
       "description": "Deletes a domain.",
       "arguments": [
         {
@@ -13892,7 +13892,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationDomainUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-domain-update",
-      "entity": "OrganizationDomainPayload",
+      "entity": "OrganizationDomain",
       "description": "[INTERNAL] Updates an organization domain settings.",
       "arguments": [
         {
@@ -13959,7 +13959,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationDomainVerify",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-domain-verify",
-      "entity": "OrganizationDomainPayload",
+      "entity": "OrganizationDomain",
       "description": "[INTERNAL] Verifies a domain to be added to an organization.",
       "arguments": [
         {
@@ -14008,7 +14008,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationInviteCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-invite-create",
-      "entity": "OrganizationInvitePayload",
+      "entity": "OrganizationInvite",
       "description": "Creates a new organization invite.",
       "arguments": [
         {
@@ -14055,7 +14055,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationInviteDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-invite-delete",
-      "entity": "DeletePayload",
+      "entity": "OrganizationInvite",
       "description": "Deletes an organization invite.",
       "arguments": [
         {
@@ -14100,7 +14100,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationInviteUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-invite-update",
-      "entity": "OrganizationInvitePayload",
+      "entity": "OrganizationInvite",
       "description": "Updates an organization invite.",
       "arguments": [
         {
@@ -14165,7 +14165,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationStartTrial",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-start-trial",
-      "entity": "OrganizationStartTrialPayload",
+      "entity": "Organization",
       "description": "[DEPRECATED] Starts a trial for the organization.",
       "arguments": [],
       "graphqlArgsSignature": "",
@@ -14193,7 +14193,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationStartTrialForPlan",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-start-trial-for-plan",
-      "entity": "OrganizationStartTrialPayload",
+      "entity": "Organization",
       "description": "Starts a trial for the organization on the specified plan type.",
       "arguments": [
         {
@@ -14240,7 +14240,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "organizationUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "organization-update",
-      "entity": "OrganizationPayload",
+      "entity": "Organization",
       "description": "Updates the user's organization.",
       "arguments": [
         {
@@ -14287,7 +14287,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "passkeyLoginFinish",
       "cliCommand": "linear mutation",
       "cliSubcommand": "passkey-login-finish",
-      "entity": "AuthResolverResponse",
+      "entity": "Auth",
       "description": "[INTERNAL] Finish passkey login process.",
       "arguments": [
         {
@@ -14331,7 +14331,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "positionalArgumentsUsage": "",
       "flagUsage": [
         "--auth-id <value>",
-        "--response <json|@file>"
+        "--response <value>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -14355,7 +14355,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "passkeyLoginStart",
       "cliCommand": "linear mutation",
       "cliSubcommand": "passkey-login-start",
-      "entity": "PasskeyLoginStartResponse",
+      "entity": "Auth",
       "description": "[INTERNAL] Starts passkey login process.",
       "arguments": [
         {
@@ -14404,7 +14404,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectAddLabel",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-add-label",
-      "entity": "ProjectPayload",
+      "entity": "Project",
       "description": "Adds a label to a project.",
       "arguments": [
         {
@@ -14469,7 +14469,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-archive",
-      "entity": "ProjectArchivePayload",
+      "entity": "Project",
       "description": "Archives a project.",
       "arguments": [
         {
@@ -14532,7 +14532,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-create",
-      "entity": "ProjectPayload",
+      "entity": "Project",
       "description": "Creates a new project.",
       "arguments": [
         {
@@ -14594,7 +14594,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-delete",
-      "entity": "ProjectArchivePayload",
+      "entity": "Project",
       "description": "Deletes (trashes) a project.",
       "arguments": [
         {
@@ -14639,7 +14639,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectExternalSyncDisable",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-external-sync-disable",
-      "entity": "ProjectPayload",
+      "entity": "Project",
       "description": "Disables external sync on a project.",
       "arguments": [
         {
@@ -14705,7 +14705,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectLabelCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-label-create",
-      "entity": "ProjectLabelPayload",
+      "entity": "ProjectLabel",
       "description": "Creates a new project label.",
       "arguments": [
         {
@@ -14752,7 +14752,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectLabelDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-label-delete",
-      "entity": "DeletePayload",
+      "entity": "ProjectLabel",
       "description": "Deletes a project label.",
       "arguments": [
         {
@@ -14797,7 +14797,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectLabelRestore",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-label-restore",
-      "entity": "ProjectLabelPayload",
+      "entity": "ProjectLabel",
       "description": "Restores a project label.",
       "arguments": [
         {
@@ -14842,7 +14842,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectLabelRetire",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-label-retire",
-      "entity": "ProjectLabelPayload",
+      "entity": "ProjectLabel",
       "description": "Retires a project label.",
       "arguments": [
         {
@@ -14887,7 +14887,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectLabelUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-label-update",
-      "entity": "ProjectLabelPayload",
+      "entity": "ProjectLabel",
       "description": "Updates a project label.",
       "arguments": [
         {
@@ -14952,7 +14952,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectMilestoneCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-milestone-create",
-      "entity": "ProjectMilestonePayload",
+      "entity": "ProjectMilestone",
       "description": "Creates a new project milestone.",
       "arguments": [
         {
@@ -14999,7 +14999,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectMilestoneDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-milestone-delete",
-      "entity": "DeletePayload",
+      "entity": "ProjectMilestone",
       "description": "Deletes a project milestone.",
       "arguments": [
         {
@@ -15044,7 +15044,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectMilestoneMove",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-milestone-move",
-      "entity": "ProjectMilestoneMovePayload",
+      "entity": "ProjectMilestoneMoveIssueToTeam",
       "description": "[Internal] Moves a project milestone to another project, can be called to undo a prior move.",
       "arguments": [
         {
@@ -15111,7 +15111,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectMilestoneUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-milestone-update",
-      "entity": "ProjectMilestonePayload",
+      "entity": "ProjectMilestone",
       "description": "Updates a project milestone.",
       "arguments": [
         {
@@ -15176,7 +15176,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectReassignStatus",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-reassign-status",
-      "entity": "SuccessPayload",
+      "entity": "Project",
       "description": "[INTERNAL] Updates all projects currently assigned to to a project status to a new project status.",
       "arguments": [
         {
@@ -15244,7 +15244,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectRelationCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-relation-create",
-      "entity": "ProjectRelationPayload",
+      "entity": "ProjectRelation",
       "description": "Creates a new project relation.",
       "arguments": [
         {
@@ -15291,7 +15291,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectRelationDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-relation-delete",
-      "entity": "DeletePayload",
+      "entity": "ProjectRelation",
       "description": "Deletes a project relation.",
       "arguments": [
         {
@@ -15336,7 +15336,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectRelationUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-relation-update",
-      "entity": "ProjectRelationPayload",
+      "entity": "ProjectRelation",
       "description": "Updates a project relation.",
       "arguments": [
         {
@@ -15401,7 +15401,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectRemoveLabel",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-remove-label",
-      "entity": "ProjectPayload",
+      "entity": "Project",
       "description": "Removes a label from a project.",
       "arguments": [
         {
@@ -15466,7 +15466,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectStatusArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-status-archive",
-      "entity": "ProjectStatusArchivePayload",
+      "entity": "ProjectStatus",
       "description": "Archives a project status.",
       "arguments": [
         {
@@ -15511,7 +15511,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectStatusCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-status-create",
-      "entity": "ProjectStatusPayload",
+      "entity": "ProjectStatus",
       "description": "Creates a new project status.",
       "arguments": [
         {
@@ -15558,7 +15558,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectStatusUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-status-unarchive",
-      "entity": "ProjectStatusArchivePayload",
+      "entity": "ProjectStatus",
       "description": "Unarchives a project status.",
       "arguments": [
         {
@@ -15603,7 +15603,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectStatusUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-status-update",
-      "entity": "ProjectStatusPayload",
+      "entity": "ProjectStatus",
       "description": "Updates a project status.",
       "arguments": [
         {
@@ -15668,7 +15668,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-unarchive",
-      "entity": "ProjectArchivePayload",
+      "entity": "Project",
       "description": "Unarchives a project.",
       "arguments": [
         {
@@ -15713,7 +15713,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-update",
-      "entity": "ProjectPayload",
+      "entity": "Project",
       "description": "Updates a project.",
       "arguments": [
         {
@@ -15778,7 +15778,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectUpdateArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-update-archive",
-      "entity": "ProjectUpdateArchivePayload",
+      "entity": "ProjectUpdate",
       "description": "Archives a project update.",
       "arguments": [
         {
@@ -15823,7 +15823,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectUpdateCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-update-create",
-      "entity": "ProjectUpdatePayload",
+      "entity": "ProjectUpdate",
       "description": "Creates a new project update.",
       "arguments": [
         {
@@ -15870,7 +15870,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectUpdateDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-update-delete",
-      "entity": "DeletePayload",
+      "entity": "Project",
       "description": "Deletes a project update.",
       "arguments": [
         {
@@ -15917,7 +15917,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectUpdateUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-update-unarchive",
-      "entity": "ProjectUpdateArchivePayload",
+      "entity": "ProjectUpdate",
       "description": "Unarchives a project update.",
       "arguments": [
         {
@@ -15962,7 +15962,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "projectUpdateUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "project-update-update",
-      "entity": "ProjectUpdatePayload",
+      "entity": "ProjectUpdate",
       "description": "Updates a project update.",
       "arguments": [
         {
@@ -16027,7 +16027,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "pushSubscriptionCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "push-subscription-create",
-      "entity": "PushSubscriptionPayload",
+      "entity": "PushSubscription",
       "description": "Creates a push subscription.",
       "arguments": [
         {
@@ -16074,7 +16074,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "pushSubscriptionDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "push-subscription-delete",
-      "entity": "PushSubscriptionPayload",
+      "entity": "PushSubscription",
       "description": "Deletes a push subscription.",
       "arguments": [
         {
@@ -16119,7 +16119,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "reactionCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "reaction-create",
-      "entity": "ReactionPayload",
+      "entity": "Reaction",
       "description": "Creates a new reaction.",
       "arguments": [
         {
@@ -16166,7 +16166,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "reactionDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "reaction-delete",
-      "entity": "DeletePayload",
+      "entity": "Reaction",
       "description": "Deletes a reaction.",
       "arguments": [
         {
@@ -16211,7 +16211,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "refreshGoogleSheetsData",
       "cliCommand": "linear mutation",
       "cliSubcommand": "refresh-google-sheets-data",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "Manually update Google Sheets data.",
       "arguments": [
         {
@@ -16272,7 +16272,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-archive",
-      "entity": "ReleaseArchivePayload",
+      "entity": "Release",
       "description": "[ALPHA] Archives a release.",
       "arguments": [
         {
@@ -16319,7 +16319,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseComplete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-complete",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Marks a release as completed. If version is provided, completes that specific release; otherwise completes the most recent started release.",
       "arguments": [
         {
@@ -16368,7 +16368,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseCompleteByAccessKey",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-complete-by-access-key",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Marks a release as completed using an access key. If version is provided, completes that specific release; otherwise completes the most recent started release. The pipeline is inferred from the access key.",
       "arguments": [
         {
@@ -16417,7 +16417,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-create",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Creates a new release.",
       "arguments": [
         {
@@ -16466,7 +16466,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-delete",
-      "entity": "ReleaseArchivePayload",
+      "entity": "Release",
       "description": "[ALPHA] Deletes (trashes) a release.",
       "arguments": [
         {
@@ -16513,7 +16513,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releasePipelineArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-pipeline-archive",
-      "entity": "ReleasePipelineArchivePayload",
+      "entity": "ReleasePipeline",
       "description": "[ALPHA] Archives a release pipeline.",
       "arguments": [
         {
@@ -16560,7 +16560,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releasePipelineCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-pipeline-create",
-      "entity": "ReleasePipelinePayload",
+      "entity": "ReleasePipeline",
       "description": "[ALPHA] Creates a new release pipeline.",
       "arguments": [
         {
@@ -16609,7 +16609,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releasePipelineDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-pipeline-delete",
-      "entity": "DeletePayload",
+      "entity": "ReleasePipeline",
       "description": "[ALPHA] Deletes a release pipeline.",
       "arguments": [
         {
@@ -16656,7 +16656,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releasePipelineUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-pipeline-unarchive",
-      "entity": "ReleasePipelineArchivePayload",
+      "entity": "ReleasePipeline",
       "description": "[ALPHA] Unarchives a release pipeline.",
       "arguments": [
         {
@@ -16703,7 +16703,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releasePipelineUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-pipeline-update",
-      "entity": "ReleasePipelinePayload",
+      "entity": "ReleasePipeline",
       "description": "[ALPHA] Updates a release pipeline.",
       "arguments": [
         {
@@ -16770,7 +16770,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseStageArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-stage-archive",
-      "entity": "ReleaseStageArchivePayload",
+      "entity": "ReleaseStage",
       "description": "[ALPHA] Archives a release stage.",
       "arguments": [
         {
@@ -16817,7 +16817,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseStageCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-stage-create",
-      "entity": "ReleaseStagePayload",
+      "entity": "ReleaseStage",
       "description": "[ALPHA] Creates a new release stage.",
       "arguments": [
         {
@@ -16866,7 +16866,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseStageUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-stage-unarchive",
-      "entity": "ReleaseStageArchivePayload",
+      "entity": "ReleaseStage",
       "description": "[ALPHA] Unarchives a release stage.",
       "arguments": [
         {
@@ -16913,7 +16913,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseStageUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-stage-update",
-      "entity": "ReleaseStagePayload",
+      "entity": "ReleaseStage",
       "description": "[ALPHA] Updates a release stage.",
       "arguments": [
         {
@@ -16980,7 +16980,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseSync",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-sync",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Syncs release data.",
       "arguments": [
         {
@@ -17029,7 +17029,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseSyncByAccessKey",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-sync-by-access-key",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Syncs release data using an access key. The pipeline is inferred from the access key.",
       "arguments": [
         {
@@ -17078,7 +17078,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-unarchive",
-      "entity": "ReleaseArchivePayload",
+      "entity": "Release",
       "description": "[ALPHA] Unarchives a release.",
       "arguments": [
         {
@@ -17125,7 +17125,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-update",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Updates a release.",
       "arguments": [
         {
@@ -17192,7 +17192,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseUpdateByPipeline",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-update-by-pipeline",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Updates a release by pipeline.",
       "arguments": [
         {
@@ -17241,7 +17241,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "releaseUpdateByPipelineByAccessKey",
       "cliCommand": "linear mutation",
       "cliSubcommand": "release-update-by-pipeline-by-access-key",
-      "entity": "ReleasePayload",
+      "entity": "Release",
       "description": "[ALPHA] Updates a release by pipeline using an access key.",
       "arguments": [
         {
@@ -17290,7 +17290,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "resendOrganizationInvite",
       "cliCommand": "linear mutation",
       "cliSubcommand": "resend-organization-invite",
-      "entity": "DeletePayload",
+      "entity": "OrganizationInvite",
       "description": "Re-send an organization invite.",
       "arguments": [
         {
@@ -17335,7 +17335,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "resendOrganizationInviteByEmail",
       "cliCommand": "linear mutation",
       "cliSubcommand": "resend-organization-invite-by-email",
-      "entity": "DeletePayload",
+      "entity": "OrganizationInvite",
       "description": "Re-send an organization invite tied to an email address.",
       "arguments": [
         {
@@ -17382,7 +17382,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-archive",
-      "entity": "RoadmapArchivePayload",
+      "entity": "Roadmap",
       "description": "Archives a roadmap.",
       "arguments": [
         {
@@ -17429,7 +17429,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-create",
-      "entity": "RoadmapPayload",
+      "entity": "Roadmap",
       "description": "Creates a new roadmap.",
       "arguments": [
         {
@@ -17478,7 +17478,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-delete",
-      "entity": "DeletePayload",
+      "entity": "Roadmap",
       "description": "Deletes a roadmap.",
       "arguments": [
         {
@@ -17525,7 +17525,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapToProjectCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-to-project-create",
-      "entity": "RoadmapToProjectPayload",
+      "entity": "RoadmapToProject",
       "description": "Creates a new roadmapToProject join.",
       "arguments": [
         {
@@ -17572,7 +17572,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapToProjectDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-to-project-delete",
-      "entity": "DeletePayload",
+      "entity": "RoadmapToProject",
       "description": "Deletes a roadmapToProject.",
       "arguments": [
         {
@@ -17617,7 +17617,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapToProjectUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-to-project-update",
-      "entity": "RoadmapToProjectPayload",
+      "entity": "RoadmapToProject",
       "description": "Updates a roadmapToProject.",
       "arguments": [
         {
@@ -17682,7 +17682,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-unarchive",
-      "entity": "RoadmapArchivePayload",
+      "entity": "Roadmap",
       "description": "Unarchives a roadmap.",
       "arguments": [
         {
@@ -17729,7 +17729,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "roadmapUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "roadmap-update",
-      "entity": "RoadmapPayload",
+      "entity": "Roadmap",
       "description": "Updates a roadmap.",
       "arguments": [
         {
@@ -17796,7 +17796,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "samlTokenUserAccountAuth",
       "cliCommand": "linear mutation",
       "cliSubcommand": "saml-token-user-account-auth",
-      "entity": "AuthResolverResponse",
+      "entity": "Auth",
       "description": "Authenticates a user account via email and authentication token for SAML.",
       "arguments": [
         {
@@ -17843,7 +17843,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-create",
-      "entity": "TeamPayload",
+      "entity": "Team",
       "description": "Creates a new team. The user who creates the team will automatically be added as a member to the newly created team.",
       "arguments": [
         {
@@ -17905,7 +17905,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamCyclesDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-cycles-delete",
-      "entity": "TeamPayload",
+      "entity": "Team",
       "description": "Deletes team's cycles data",
       "arguments": [
         {
@@ -17950,7 +17950,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-delete",
-      "entity": "DeletePayload",
+      "entity": "Team",
       "description": "Deletes a team.",
       "arguments": [
         {
@@ -17995,7 +17995,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamKeyDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-key-delete",
-      "entity": "DeletePayload",
+      "entity": "TeamKey",
       "description": "Deletes a previously used team key.",
       "arguments": [
         {
@@ -18040,7 +18040,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamMembershipCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-membership-create",
-      "entity": "TeamMembershipPayload",
+      "entity": "TeamMembership",
       "description": "Creates a new team membership.",
       "arguments": [
         {
@@ -18087,7 +18087,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamMembershipDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-membership-delete",
-      "entity": "DeletePayload",
+      "entity": "TeamMembership",
       "description": "Deletes a team membership.",
       "arguments": [
         {
@@ -18148,7 +18148,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamMembershipUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-membership-update",
-      "entity": "TeamMembershipPayload",
+      "entity": "TeamMembership",
       "description": "Updates a team membership.",
       "arguments": [
         {
@@ -18213,7 +18213,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamUnarchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-unarchive",
-      "entity": "TeamArchivePayload",
+      "entity": "Team",
       "description": "Unarchives a team and cancels deletion.",
       "arguments": [
         {
@@ -18258,7 +18258,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "teamUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "team-update",
-      "entity": "TeamPayload",
+      "entity": "Team",
       "description": "Updates a team.",
       "arguments": [
         {
@@ -18338,7 +18338,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "templateCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "template-create",
-      "entity": "TemplatePayload",
+      "entity": "Template",
       "description": "Creates a new template.",
       "arguments": [
         {
@@ -18385,7 +18385,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "templateDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "template-delete",
-      "entity": "DeletePayload",
+      "entity": "Template",
       "description": "Deletes a template.",
       "arguments": [
         {
@@ -18430,7 +18430,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "templateUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "template-update",
-      "entity": "TemplatePayload",
+      "entity": "Template",
       "description": "Updates an existing template.",
       "arguments": [
         {
@@ -18495,7 +18495,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "timeScheduleCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "time-schedule-create",
-      "entity": "TimeSchedulePayload",
+      "entity": "TimeSchedule",
       "description": "Creates a new time schedule.",
       "arguments": [
         {
@@ -18542,7 +18542,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "timeScheduleDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "time-schedule-delete",
-      "entity": "DeletePayload",
+      "entity": "TimeSchedule",
       "description": "Deletes a time schedule.",
       "arguments": [
         {
@@ -18587,7 +18587,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "timeScheduleRefreshIntegrationSchedule",
       "cliCommand": "linear mutation",
       "cliSubcommand": "time-schedule-refresh-integration-schedule",
-      "entity": "TimeSchedulePayload",
+      "entity": "TimeSchedule",
       "description": "Refresh the integration schedule information.",
       "arguments": [
         {
@@ -18632,7 +18632,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "timeScheduleUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "time-schedule-update",
-      "entity": "TimeSchedulePayload",
+      "entity": "TimeSchedule",
       "description": "Updates a time schedule.",
       "arguments": [
         {
@@ -18697,7 +18697,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "timeScheduleUpsertExternal",
       "cliCommand": "linear mutation",
       "cliSubcommand": "time-schedule-upsert-external",
-      "entity": "TimeSchedulePayload",
+      "entity": "TimeSchedule",
       "description": "Upsert an external time schedule.",
       "arguments": [
         {
@@ -18763,7 +18763,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "trackAnonymousEvent",
       "cliCommand": "linear mutation",
       "cliSubcommand": "track-anonymous-event",
-      "entity": "EventTrackingPayload",
+      "entity": "Analytics",
       "description": "Track an anonymous analytics event.",
       "arguments": [
         {
@@ -18810,7 +18810,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "triageResponsibilityCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "triage-responsibility-create",
-      "entity": "TriageResponsibilityPayload",
+      "entity": "TriageResponsibility",
       "description": "Creates a new triage responsibility.",
       "arguments": [
         {
@@ -18857,7 +18857,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "triageResponsibilityDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "triage-responsibility-delete",
-      "entity": "DeletePayload",
+      "entity": "TriageResponsibility",
       "description": "Deletes a triage responsibility.",
       "arguments": [
         {
@@ -18902,7 +18902,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "triageResponsibilityUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "triage-responsibility-update",
-      "entity": "TriageResponsibilityPayload",
+      "entity": "TriageResponsibility",
       "description": "Updates an existing triage responsibility.",
       "arguments": [
         {
@@ -18967,7 +18967,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "updateIntegrationSlackScopes",
       "cliCommand": "linear mutation",
       "cliSubcommand": "update-integration-slack-scopes",
-      "entity": "IntegrationPayload",
+      "entity": "Integration",
       "description": "[Internal] Updates existing Slack integration scopes.",
       "arguments": [
         {
@@ -19054,7 +19054,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userChangeRole",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-change-role",
-      "entity": "UserAdminPayload",
+      "entity": "User",
       "description": "Changes the role of a user.",
       "arguments": [
         {
@@ -19119,7 +19119,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userDiscordConnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-discord-connect",
-      "entity": "UserPayload",
+      "entity": "User",
       "description": "Connects the Discord user to this Linear account via OAuth2.",
       "arguments": [
         {
@@ -19185,7 +19185,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userExternalUserDisconnect",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-external-user-disconnect",
-      "entity": "UserPayload",
+      "entity": "User",
       "description": "Disconnects the external user from this Linear account.",
       "arguments": [
         {
@@ -19232,7 +19232,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userFlagUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-flag-update",
-      "entity": "UserSettingsFlagPayload",
+      "entity": "UserFlag",
       "description": "Updates a user's settings flag.",
       "arguments": [
         {
@@ -19298,7 +19298,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userRevokeAllSessions",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-revoke-all-sessions",
-      "entity": "UserAdminPayload",
+      "entity": "User",
       "description": "Revokes a user's sessions. Can only be called by an admin or owner.",
       "arguments": [
         {
@@ -19343,7 +19343,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userRevokeSession",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-revoke-session",
-      "entity": "UserAdminPayload",
+      "entity": "User",
       "description": "Revokes a specific session for a user. Can only be called by an admin or owner.",
       "arguments": [
         {
@@ -19408,7 +19408,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userSettingsFlagsReset",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-settings-flags-reset",
-      "entity": "UserSettingsFlagsResetPayload",
+      "entity": "UserSettingsFlags",
       "description": "Resets user's setting flags.",
       "arguments": [
         {
@@ -19437,7 +19437,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlArgsSignature": "flags: [UserFlagType!]",
       "positionalArgumentsUsage": "",
       "flagUsage": [
-        "--flags <json|@file>"
+        "--flags <value>"
       ],
       "returnType": {
         "kind": "NON_NULL",
@@ -19459,7 +19459,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userSettingsUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-settings-update",
-      "entity": "UserSettingsPayload",
+      "entity": "UserSettings",
       "description": "Updates the user's settings.",
       "arguments": [
         {
@@ -19524,7 +19524,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userSuspend",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-suspend",
-      "entity": "UserAdminPayload",
+      "entity": "User",
       "description": "Suspends a user. Can only be called by an admin or owner.",
       "arguments": [
         {
@@ -19585,7 +19585,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userUnlinkFromIdentityProvider",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-unlink-from-identity-provider",
-      "entity": "UserAdminPayload",
+      "entity": "User",
       "description": "Unlinks a guest user from their identity provider. Can only be called by an admin when SCIM is enabled.",
       "arguments": [
         {
@@ -19630,7 +19630,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userUnsuspend",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-unsuspend",
-      "entity": "UserAdminPayload",
+      "entity": "User",
       "description": "Un-suspends a user. Can only be called by an admin or owner.",
       "arguments": [
         {
@@ -19691,7 +19691,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "userUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "user-update",
-      "entity": "UserPayload",
+      "entity": "User",
       "description": "Updates a user. Only available to organization admins and the user themselves.",
       "arguments": [
         {
@@ -19756,7 +19756,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "viewPreferencesCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "view-preferences-create",
-      "entity": "ViewPreferencesPayload",
+      "entity": "ViewPreferences",
       "description": "Creates a new ViewPreferences object.",
       "arguments": [
         {
@@ -19803,7 +19803,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "viewPreferencesDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "view-preferences-delete",
-      "entity": "DeletePayload",
+      "entity": "ViewPreferences",
       "description": "Deletes a ViewPreferences.",
       "arguments": [
         {
@@ -19848,7 +19848,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "viewPreferencesUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "view-preferences-update",
-      "entity": "ViewPreferencesPayload",
+      "entity": "ViewPreferences",
       "description": "Updates an existing ViewPreferences object.",
       "arguments": [
         {
@@ -19913,7 +19913,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "webhookCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "webhook-create",
-      "entity": "WebhookPayload",
+      "entity": "Webhook",
       "description": "Creates a new webhook.",
       "arguments": [
         {
@@ -19960,7 +19960,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "webhookDelete",
       "cliCommand": "linear mutation",
       "cliSubcommand": "webhook-delete",
-      "entity": "DeletePayload",
+      "entity": "Webhook",
       "description": "Deletes a Webhook.",
       "arguments": [
         {
@@ -20005,7 +20005,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "webhookRotateSecret",
       "cliCommand": "linear mutation",
       "cliSubcommand": "webhook-rotate-secret",
-      "entity": "WebhookRotateSecretPayload",
+      "entity": "Webhook",
       "description": "Rotates the signing secret for a Webhook.",
       "arguments": [
         {
@@ -20050,7 +20050,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "webhookUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "webhook-update",
-      "entity": "WebhookPayload",
+      "entity": "Webhook",
       "description": "Updates an existing Webhook.",
       "arguments": [
         {
@@ -20115,7 +20115,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "workflowStateArchive",
       "cliCommand": "linear mutation",
       "cliSubcommand": "workflow-state-archive",
-      "entity": "WorkflowStateArchivePayload",
+      "entity": "WorkflowState",
       "description": "Archives a state. Only states with issues that have all been archived can be archived.",
       "arguments": [
         {
@@ -20160,7 +20160,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "workflowStateCreate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "workflow-state-create",
-      "entity": "WorkflowStatePayload",
+      "entity": "WorkflowState",
       "description": "Creates a new state, adding it to the workflow of a team.",
       "arguments": [
         {
@@ -20207,7 +20207,7 @@ export const mutationRegistry: GeneratedRegistry<OperationRegistryEntry> = {
       "graphqlName": "workflowStateUpdate",
       "cliCommand": "linear mutation",
       "cliSubcommand": "workflow-state-update",
-      "entity": "WorkflowStatePayload",
+      "entity": "WorkflowState",
       "description": "Updates a state.",
       "arguments": [
         {

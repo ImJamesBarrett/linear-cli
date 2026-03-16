@@ -44,9 +44,20 @@ const GENERATED_DIR = path.join(REPO_ROOT, "src/generated");
 const SCHEMA_PATH = path.join(GENERATED_DIR, "schema.graphql");
 const INVENTORY_PATH = path.join(REPO_ROOT, ".project/linear_inventory.json");
 
+type InventoryOperationRow = {
+  arguments: string;
+  description: string;
+  entity: string;
+  flags: string;
+  graphql_name: string;
+  subcommand: string;
+  tags: string;
+};
+
 async function main(): Promise<void> {
   const sdl = await readFile(SCHEMA_PATH, "utf8");
   const schemaStats = await stat(SCHEMA_PATH);
+  const inventory = await readInventory();
   const schema = buildASTSchema(parse(sdl), { assumeValidSDL: true });
 
   const connectionEntries = collectConnectionEntries(schema);
@@ -67,6 +78,7 @@ async function main(): Promise<void> {
     kind: "query",
     entityNames,
     connectionNodeTypes,
+    inventoryRows: indexInventoryRows(inventory.queries),
   });
 
   const mutationEntries = collectOperationEntries({
@@ -74,6 +86,7 @@ async function main(): Promise<void> {
     kind: "mutation",
     entityNames,
     connectionNodeTypes,
+    inventoryRows: indexInventoryRows(inventory.mutations),
   });
 
   const metadata = buildMetadata({
@@ -85,8 +98,7 @@ async function main(): Promise<void> {
     commandCount: queryEntries.length + mutationEntries.length + UTILITY_COMMAND_COUNT,
   });
 
-  const expectedCounts = await readExpectedCounts();
-  assertCountsMatchInventory(metadata, expectedCounts);
+  assertCountsMatchInventory(metadata, inventory.counts);
 
   await mkdir(GENERATED_DIR, { recursive: true });
 
@@ -150,15 +162,19 @@ function buildMetadata(counts: {
   };
 }
 
-async function readExpectedCounts(): Promise<{
-  queries: number;
-  mutations: number;
-  entities: number;
-  relationships: number;
-  command_rows: number;
+async function readInventory(): Promise<{
+  counts: {
+    queries: number;
+    mutations: number;
+    entities: number;
+    relationships: number;
+    command_rows: number;
+  };
+  queries: InventoryOperationRow[];
+  mutations: InventoryOperationRow[];
 }> {
   const raw = await readFile(INVENTORY_PATH, "utf8");
-  const inventory = JSON.parse(raw) as {
+  return JSON.parse(raw) as {
     counts: {
       queries: number;
       mutations: number;
@@ -166,9 +182,9 @@ async function readExpectedCounts(): Promise<{
       relationships: number;
       command_rows: number;
     };
+    queries: InventoryOperationRow[];
+    mutations: InventoryOperationRow[];
   };
-
-  return inventory.counts;
 }
 
 function assertCountsMatchInventory(
@@ -205,11 +221,13 @@ function collectOperationEntries({
   kind,
   entityNames,
   connectionNodeTypes,
+  inventoryRows,
 }: {
   fields: Record<string, GraphQLField<unknown, unknown>>;
   kind: "query" | "mutation";
   entityNames: Set<string>;
   connectionNodeTypes: Map<string, string | null>;
+  inventoryRows: Map<string, InventoryOperationRow>;
 }): OperationRegistryEntry[] {
   return Object.values(fields)
     .map((field) =>
@@ -218,6 +236,7 @@ function collectOperationEntries({
         kind,
         entityNames,
         connectionNodeTypes,
+        inventoryRow: requireInventoryRow(inventoryRows, field.name),
       }),
     )
     .sort((left, right) => left.graphqlName.localeCompare(right.graphqlName));
@@ -228,11 +247,13 @@ function createOperationEntry({
   kind,
   entityNames,
   connectionNodeTypes,
+  inventoryRow,
 }: {
   field: GraphQLField<unknown, unknown>;
   kind: "query" | "mutation";
   entityNames: Set<string>;
   connectionNodeTypes: Map<string, string | null>;
+  inventoryRow: InventoryOperationRow;
 }): OperationRegistryEntry {
   const args = field.args.map(createArgumentDefinition);
   const returnType = createTypeRef(field.type);
@@ -242,22 +263,17 @@ function createOperationEntry({
     kind,
     graphqlName: field.name,
     cliCommand: `linear ${kind}`,
-    cliSubcommand: toKebabCase(field.name),
-    entity: inferEntityName(namedReturnType, connectionNodeTypes),
-    description: field.description ?? "",
+    cliSubcommand: inventoryRow.subcommand,
+    entity:
+      inventoryRow.entity || inferEntityName(namedReturnType, entityNames, connectionNodeTypes),
+    description: inventoryRow.description,
     arguments: args,
     graphqlArgsSignature: renderArgumentsSignature(field.args),
-    positionalArgumentsUsage:
-      args
-        .filter((argument) => argument.positionalName)
-        .map((argument) => `<${argument.positionalName}>`)
-        .join(" ") ?? "",
-    flagUsage: args
-      .filter((argument) => argument.cliFlag)
-      .map((argument) => renderFlagUsage(argument)),
+    positionalArgumentsUsage: inventoryRow.arguments,
+    flagUsage: splitFlagUsage(inventoryRow.flags),
     returnType,
     returnTypeSignature: renderTypeSignature(field.type),
-    tags: inferTags(field.description ?? "", field.deprecationReason ?? null),
+    tags: parseInventoryTags(inventoryRow.tags),
     deprecatedReason: field.deprecationReason ?? null,
     sourceLine: field.astNode?.loc?.startToken.line ?? null,
     defaultSelectionStrategy: inferDefaultSelectionStrategy(
@@ -275,7 +291,7 @@ function createArgumentDefinition(argument: GraphQLArgument): RegistryArgumentDe
 
   return {
     graphqlName: argument.name,
-    cliFlag: isId ? null : `--${toKebabCase(argument.name)}`,
+    cliFlag: isId ? null : `--${toKebabCase(argument.name).replace(/^_+/, "")}`,
     positionalName: isId ? "id" : null,
     description: argument.description ?? "",
     kind,
@@ -536,9 +552,47 @@ function renderArgumentsSignature(arguments_: readonly GraphQLArgument[]): strin
 
 function inferEntityName(
   namedType: GraphQLNamedType,
+  entityNames: Set<string>,
   connectionNodeTypes: Map<string, string | null>,
 ): string {
+  if (entityNames.has(namedType.name)) {
+    return namedType.name;
+  }
+
+  const connectionNodeType = connectionNodeTypes.get(namedType.name);
+
+  if (connectionNodeType && entityNames.has(connectionNodeType)) {
+    return connectionNodeType;
+  }
+
+  if (isObjectType(namedType) && namedType.getFields().success) {
+    for (const field of Object.values(namedType.getFields())) {
+      if (field.name === "success" || field.name === "lastSyncId") {
+        continue;
+      }
+
+      const childType = getNamedType(field.type);
+
+      if (entityNames.has(childType.name)) {
+        return childType.name;
+      }
+
+      const childConnectionNodeType = connectionNodeTypes.get(childType.name);
+
+      if (childConnectionNodeType && entityNames.has(childConnectionNodeType)) {
+        return childConnectionNodeType;
+      }
+    }
+  }
+
   return connectionNodeTypes.get(namedType.name) ?? namedType.name;
+}
+
+function parseInventoryTags(inventoryTags: string): RegistryTag[] {
+  return inventoryTags
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean) as RegistryTag[];
 }
 
 function inferTags(description: string, deprecatedReason: string | null): RegistryTag[] {
@@ -563,37 +617,32 @@ function inferTags(description: string, deprecatedReason: string | null): Regist
   return [...tags].sort();
 }
 
-function renderFlagUsage(argument: RegistryArgumentDefinition): string {
-  if (!argument.cliFlag) {
-    return "";
+function splitFlagUsage(flags: string): string[] {
+  if (flags.length === 0) {
+    return [];
   }
 
-  if (argument.kind === "input" || argument.kind === "json" || argument.kind === "list") {
-    return `${argument.cliFlag} <json|@file>`;
-  }
-
-  if (
-    argument.typeRef.kind === "NAMED" &&
-    argument.typeRef.name &&
-    isBooleanName(argument.typeRef.name)
-  ) {
-    return argument.cliFlag;
-  }
-
-  if (
-    argument.typeRef.kind === "NON_NULL" &&
-    argument.typeRef.ofType?.kind === "NAMED" &&
-    argument.typeRef.ofType.name &&
-    isBooleanName(argument.typeRef.ofType.name)
-  ) {
-    return argument.cliFlag;
-  }
-
-  return `${argument.cliFlag} <value>`;
+  return flags
+    .split(",")
+    .map((flag) => flag.trim())
+    .filter((flag) => flag !== "--select <fields|@file>" && flag !== "--format <human|json>");
 }
 
-function isBooleanName(typeName: string): boolean {
-  return typeName === "Boolean";
+function indexInventoryRows(rows: InventoryOperationRow[]): Map<string, InventoryOperationRow> {
+  return new Map(rows.map((row) => [row.graphql_name, row]));
+}
+
+function requireInventoryRow(
+  inventoryRows: Map<string, InventoryOperationRow>,
+  graphqlName: string,
+): InventoryOperationRow {
+  const row = inventoryRows.get(graphqlName);
+
+  if (!row) {
+    throw new Error(`missing inventory row for GraphQL operation ${graphqlName}`);
+  }
+
+  return row;
 }
 
 function getImplementedInterfaces(type: GraphQLObjectType | GraphQLInterfaceType): string[] {
@@ -628,6 +677,9 @@ function inferNodeTypeFromEdge(
 
 function toKebabCase(value: string): string {
   return value
+    .replace(/^_+/, "")
+    .replace(/([A-Za-z])([0-9])/g, "$1-$2")
+    .replace(/([0-9])([A-Za-z])/g, "$1-$2")
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
