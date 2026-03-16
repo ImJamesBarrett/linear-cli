@@ -1,5 +1,7 @@
 # linear-cli
 
+> This project was built in one shot by Codex and is pending human review.
+
 `linear-cli` is a schema-driven command-line client for the Linear GraphQL API.
 
 It gives you two ways to work:
