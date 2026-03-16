@@ -61,7 +61,7 @@ export async function exchangeClientCredentialsToken(
       client_secret: input.clientSecret,
       grant_type: "client_credentials",
       ...(input.scopes && input.scopes.length > 0
-        ? { scope: input.scopes.join(" ") }
+        ? { scope: input.scopes.join(",") }
         : {}),
     }).toString(),
   });
@@ -208,4 +208,3 @@ async function parseClientCredentialsResponse(
     tokenType: raw.token_type ?? null,
   };
 }
-

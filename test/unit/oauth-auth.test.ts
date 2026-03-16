@@ -39,7 +39,7 @@ describe("oauth auth helpers", () => {
 
     expect(url.origin + url.pathname).toBe("https://linear.app/oauth/authorize");
     expect(url.searchParams.get("actor")).toBe("app");
-    expect(url.searchParams.get("scope")).toBe("read write");
+    expect(url.searchParams.get("scope")).toBe("read,write");
     expect(url.searchParams.get("code_challenge_method")).toBe("S256");
   });
 

@@ -79,7 +79,13 @@ export async function uploadLinearFile(input: {
     );
   }
 
-  await putUploadedFile(uploadFile.uploadUrl, file.contents, uploadFile.headers, input.fetchImpl);
+  await putUploadedFile(
+    uploadFile.uploadUrl,
+    file.contents,
+    file.contentType,
+    uploadFile.headers,
+    input.fetchImpl,
+  );
 
   return {
     assetUrl: uploadFile.assetUrl,
@@ -126,10 +132,15 @@ export async function prepareUploadFile(
 async function putUploadedFile(
   uploadUrl: string,
   contents: Buffer,
+  contentType: string,
   uploadHeaders: Array<{ key: string; value: string }>,
   fetchImpl?: FetchLike,
 ): Promise<void> {
-  const headers = Object.fromEntries(uploadHeaders.map((header) => [header.key, header.value]));
+  const headers = {
+    "Cache-Control": "public, max-age=31536000",
+    "Content-Type": contentType,
+    ...Object.fromEntries(uploadHeaders.map((header) => [header.key, header.value])),
+  };
   const response = await (fetchImpl ?? fetch)(uploadUrl, {
     body: contents,
     headers,

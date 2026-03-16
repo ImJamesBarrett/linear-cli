@@ -14,10 +14,11 @@ import { createPlaintextTokenStore } from "../../src/core/auth/token-store.js";
 
 describe("client credentials auth", () => {
   it("exchanges a client credentials token", async () => {
+    const requests: string[] = [];
     const token = await exchangeClientCredentialsToken({
       clientId: "client-id",
       clientSecret: "client-secret",
-      fetchImpl: createFetchStub(),
+      fetchImpl: createFetchStub(undefined, requests),
       scopes: ["admin", "read"],
       tokenUrl: "https://example.com/token",
     });
@@ -28,6 +29,7 @@ describe("client credentials auth", () => {
       scopes: ["admin", "read"],
       tokenType: "Bearer",
     });
+    expect(new URLSearchParams(requests[0] ?? "").get("scope")).toBe("admin,read");
   });
 
   it("reuses a cached session when it is still fresh", async () => {
@@ -95,9 +97,12 @@ function createFetchStub(
     scopes: ["admin", "read"],
     tokenType: "Bearer",
   },
+  requests: string[] = [],
 ): FetchLike {
-  return async () =>
-    new Response(
+  return async (_url, init) => {
+    requests.push(((init as { body?: { toString(): string } } | undefined)?.body?.toString()) ?? "");
+
+    return new Response(
       JSON.stringify({
         access_token: response.accessToken,
         expires_in: response.expiresIn,
@@ -111,5 +116,5 @@ function createFetchStub(
         status: 200,
       },
     );
+  };
 }
-

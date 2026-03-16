@@ -24,7 +24,12 @@ describe("upload file helper", () => {
   it("uploads a file through GraphQL negotiation and binary PUT", async () => {
     const tempDir = await mkdtemp(path.join(os.tmpdir(), "linear-cli-upload-"));
     const filePath = path.join(tempDir, "example.txt");
-    const requests: Array<{ body?: unknown; method?: string; url: string }> = [];
+    const requests: Array<{
+      body?: unknown;
+      headers?: Record<string, string>;
+      method?: string;
+      url: string;
+    }> = [];
     await writeFile(filePath, "hello world", "utf8");
 
     const result = await uploadLinearFile({
@@ -41,18 +46,26 @@ describe("upload file helper", () => {
       size: 11,
       success: true,
     });
-    expect(requests).toEqual([
-      {
-        body: expect.stringContaining("\"filename\":\"example.txt\""),
-        method: "POST",
-        url: "https://example.com/graphql",
+    expect(requests).toHaveLength(2);
+    expect(requests[0]).toMatchObject({
+      body: expect.stringContaining("\"filename\":\"example.txt\""),
+      headers: {
+        authorization: "Bearer test-token",
+        "content-type": "application/json",
       },
-      {
-        body: Buffer.from("hello world"),
-        method: "PUT",
-        url: "https://uploads.example.com/upload",
+      method: "POST",
+      url: "https://example.com/graphql",
+    });
+    expect(requests[1]).toEqual({
+      body: Buffer.from("hello world"),
+      headers: {
+        "cache-control": "public, max-age=31536000",
+        "content-type": "text/plain",
+        "x-amz-acl": "private",
       },
-    ]);
+      method: "PUT",
+      url: "https://uploads.example.com/upload",
+    });
   });
 
   it("fails when the binary PUT request is rejected", async () => {
@@ -71,7 +84,12 @@ describe("upload file helper", () => {
 });
 
 function createUploadFetchStub(
-  requests: Array<{ body?: unknown; method?: string; url: string }>,
+  requests: Array<{
+    body?: unknown;
+    headers?: Record<string, string>;
+    method?: string;
+    url: string;
+  }>,
 ): FetchLike {
   let callCount = 0;
 
@@ -79,8 +97,10 @@ function createUploadFetchStub(
     const normalizedUrl = String(url);
     const method = (init as { method?: string } | undefined)?.method ?? "GET";
     const body = (init as { body?: string } | undefined)?.body;
+    const headers = normalizeHeaders((init as { headers?: unknown } | undefined)?.headers);
     requests.push({
       body,
+      headers,
       method,
       url: normalizedUrl,
     });
@@ -95,7 +115,7 @@ function createUploadFetchStub(
               success: true,
               uploadFile: {
                 assetUrl: "https://assets.example.com/example.txt",
-                headers: [],
+                headers: [{ key: "x-amz-acl", value: "private" }],
                 uploadUrl: "https://uploads.example.com/upload",
               },
             },
@@ -112,6 +132,20 @@ function createUploadFetchStub(
 
     return new Response(null, { status: 200 });
   };
+}
+
+function normalizeHeaders(input: unknown): Record<string, string> {
+  if (input instanceof Headers) {
+    return Object.fromEntries([...input.entries()].map(([key, value]) => [key.toLowerCase(), value]));
+  }
+
+  if (!input || typeof input !== "object") {
+    return {};
+  }
+
+  return Object.fromEntries(
+    Object.entries(input as Record<string, string>).map(([key, value]) => [key.toLowerCase(), value]),
+  );
 }
 
 function createFailingUploadFetchStub(): FetchLike {
