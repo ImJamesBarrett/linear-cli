@@ -134,6 +134,45 @@ describe("command execution integration", () => {
     expect(result.stdout.join("\n")).toContain("Success: true");
   });
 
+  it("executes generated operation aliases from the root command", async () => {
+    let requestBody = "";
+    fetchMock.mockImplementation(async (_url: string, init?: { body?: string }) => {
+      requestBody = String(init?.body ?? "");
+
+      return new Response(
+        JSON.stringify({
+          data: {
+            issueCreate: {
+              success: true,
+              issue: {
+                id: "issue_123",
+                identifier: "ISS-123",
+                title: "Alias issue",
+              },
+            },
+          },
+        }),
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+          status: 200,
+        },
+      );
+    });
+
+    const result = await runCli([
+      "issue-create",
+      "--input",
+      `@${path.join(FIXTURES_DIR, "issue-create-input.json")}`,
+      "--select",
+      "success issue { id identifier title }",
+    ]);
+
+    expect(requestBody).toContain("\"operationName\":\"IssueCreateMutation\"");
+    expect(result.stdout.join("\n")).toContain("Success: true");
+  });
+
   it("fails on partial GraphQL data unless --allow-partial-data is set", async () => {
     fetchMock.mockImplementation(
       async () =>
