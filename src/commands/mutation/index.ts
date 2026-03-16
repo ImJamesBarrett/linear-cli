@@ -1,6 +1,13 @@
 import { Command } from "commander";
 
-export function createMutationCommand(): Command {
-  return new Command("mutation").description("Execute generated Linear GraphQL mutations.");
-}
+import { registerMutationSubcommands } from "./register-mutation-subcommands.js";
 
+export function createMutationCommand(): Command {
+  const command = new Command("mutation").description(
+    "Execute generated Linear GraphQL mutations.",
+  );
+
+  registerMutationSubcommands(command);
+
+  return command;
+}

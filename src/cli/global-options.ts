@@ -3,7 +3,7 @@ import type { Command } from "commander";
 export function registerGlobalOptions(command: Command): void {
   command
     .option("--profile <name>", "use a named Linear CLI profile")
-    .option("--format <human|json>", "set the output format", "human")
+    .option("--format <human|json>", "set the output format")
     .option("--header <name:value>", "add a request header", collectHeaders, [])
     .option(
       "--public-file-urls-expire-in <seconds>",
@@ -20,4 +20,3 @@ function collectHeaders(value: string, headers: string[]): string[] {
   headers.push(value);
   return headers;
 }
-

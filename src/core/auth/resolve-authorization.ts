@@ -5,6 +5,7 @@ import { ensureFreshOAuthSession } from "./token-refresh.js";
 import { createTokenStore } from "./token-store.js";
 import { resolveApiKeyAuth } from "./api-key-auth.js";
 import type { ResolvedProfileConfig } from "../config/config-schema.js";
+import { CliError, EXIT_CODES } from "../runtime/exit-codes.js";
 
 const authEnvSchema = z.object({
   LINEAR_ACCESS_TOKEN: z.string().trim().min(1).optional(),
@@ -50,8 +51,9 @@ export async function resolveAuthorizationHeader(input: {
   const clientSecret = env.LINEAR_CLIENT_SECRET ?? storedSecrets.clientSecret;
 
   if (!clientId || !clientSecret) {
-    throw new Error(
+    throw new CliError(
       `Client credentials auth for profile "${input.profileConfig.profileName}" requires client ID and client secret.`,
+      EXIT_CODES.authOrConfigFailure,
     );
   }
 
@@ -78,4 +80,3 @@ function isTruthy(value: string | undefined): boolean {
 
   return ["1", "true", "yes", "on"].includes(value.toLowerCase());
 }
-

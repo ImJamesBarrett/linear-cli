@@ -4,7 +4,7 @@ import type { GlobalCliOptions } from "../../types/cli.js";
 
 const globalOptionsSchema = z.object({
   allowPartialData: z.boolean().default(false),
-  format: z.enum(["human", "json"]).default("human"),
+  format: z.enum(["human", "json"]).nullable().optional(),
   header: z.array(z.string()).default([]),
   profile: z.string().trim().min(1).nullable().optional(),
   publicFileUrlsExpireIn: z
@@ -21,17 +21,17 @@ const globalOptionsSchema = z.object({
 export function normalizeGlobalOptions(raw: Record<string, unknown>): GlobalCliOptions {
   const parsed = globalOptionsSchema.parse({
     ...raw,
+    format: raw.format ?? null,
     profile: raw.profile ?? null,
     publicFileUrlsExpireIn: raw.publicFileUrlsExpireIn ?? null,
   });
 
   return {
     allowPartialData: parsed.allowPartialData,
-    format: parsed.format,
+    format: parsed.format ?? null,
     headers: parsed.header,
     profile: parsed.profile ?? null,
     publicFileUrlsExpireIn: parsed.publicFileUrlsExpireIn ?? null,
     verbose: parsed.verbose,
   };
 }
-

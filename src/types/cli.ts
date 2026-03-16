@@ -2,7 +2,7 @@ export type OutputFormat = "human" | "json";
 
 export interface GlobalCliOptions {
   allowPartialData: boolean;
-  format: OutputFormat;
+  format: OutputFormat | null;
   headers: string[];
   profile: string | null;
   publicFileUrlsExpireIn: number | null;
@@ -14,4 +14,3 @@ export interface RuntimeContext {
   globalOptions: GlobalCliOptions;
   startedAt: Date;
 }
-
