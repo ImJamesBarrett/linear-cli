@@ -68,3 +68,116 @@ The project is intentionally being built in small commit-sized steps:
 5. add utility commands, output modes, and tests
 
 The local execution checklist lives in `.project/todo.md`. That file is intentionally local-only; git commits contain the implementation changes themselves.
+
+## Usage
+
+### Authentication
+
+Store a personal API key for the default profile:
+
+```bash
+linear auth login-api-key --api-key lin_api_key_here
+```
+
+Run an OAuth login flow for a named profile:
+
+```bash
+linear --profile work auth login-oauth --client-id linear_oauth_client_id --scopes read,write
+```
+
+Check the stored auth state for the active profile:
+
+```bash
+linear auth status
+linear --format json auth status
+```
+
+### Raw GraphQL
+
+Execute a raw GraphQL document inline:
+
+```bash
+linear graphql raw \
+  --query 'query ViewerQuery { viewer { id name } }' \
+  --operation-name ViewerQuery
+```
+
+Load the document and variables from files:
+
+```bash
+linear --format json graphql raw \
+  --query @./query.graphql \
+  --variables @./variables.json \
+  --operation-name ViewerQuery
+```
+
+### Generated commands
+
+Execute a generated query with the default selection:
+
+```bash
+linear query viewer
+```
+
+Override the selection set for a specific query:
+
+```bash
+linear query issue sample-id --select 'id identifier title state { name }'
+```
+
+Execute a generated mutation with inline JSON input:
+
+```bash
+linear mutation issue-create \
+  --input '{"teamId":"team_123","title":"Example issue"}' \
+  --select 'success issue { id identifier title }'
+```
+
+### Pagination
+
+Run a single page query:
+
+```bash
+linear query issues --first 20
+```
+
+Fetch all forward pages for a connection query:
+
+```bash
+linear query issues --all
+linear --verbose query projects --all --select 'nodes { id name } pageInfo { hasNextPage endCursor }'
+```
+
+Backward pagination is supported with `--last` and `--before`, but it cannot be combined with `--all`.
+
+### JSON input and `@file`
+
+Flags that accept JSON, such as `--input`, `--filter`, `--variables`, `--metadata`, and `--select`, can read either inline values or file references.
+
+```bash
+linear mutation project-create --input @./project-create.json
+linear query issues --filter @./issue-filter.json --select @./issue-selection.graphql
+```
+
+### Upload helpers
+
+Upload a file and print the resulting asset URL:
+
+```bash
+linear upload file ./screenshot.png
+```
+
+Override inferred metadata or request JSON output:
+
+```bash
+linear --format json upload file ./report.pdf \
+  --content-type application/pdf \
+  --filename quarterly-report.pdf \
+  --metadata '{"source":"finance"}'
+```
+
+Delete an uploaded asset by URL:
+
+```bash
+linear upload delete https://assets.example.com/path/to/file.png
+```
