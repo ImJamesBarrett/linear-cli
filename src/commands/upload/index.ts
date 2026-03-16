@@ -5,6 +5,7 @@ import { loadConfigFile } from "../../core/config/load-config.js";
 import { readConfigEnvOverrides, resolveProfileConfig } from "../../core/config/merge-sources.js";
 import { createRuntimeContext } from "../../core/runtime/context.js";
 import { CliError, EXIT_CODES } from "../../core/runtime/exit-codes.js";
+import { deleteLinearUploadedFile } from "../../core/upload/file-delete.js";
 import { uploadLinearFile } from "../../core/upload/file-upload.js";
 import { loadJsonInput } from "../../core/util/json-input.js";
 
@@ -60,6 +61,37 @@ export function createUploadCommand(): Command {
       }
 
       console.log(result.assetUrl);
+    });
+
+  command
+    .command("delete")
+    .description("Delete an uploaded asset by its asset URL.")
+    .argument("<asset-url>", "the asset URL to delete")
+    .action(async (assetUrl: string, invokedCommand: Command) => {
+      const runtimeContext = createRuntimeContext(invokedCommand);
+      const config = await loadConfigFile();
+      const profileConfig = resolveProfileConfig({
+        cliOptions: runtimeContext.globalOptions,
+        config,
+        envOverrides: readConfigEnvOverrides(),
+      });
+      const authorization = await resolveAuthorizationHeader({
+        profileConfig,
+      });
+      const result = await deleteLinearUploadedFile({
+        assetUrl,
+        authorization,
+        baseUrl: profileConfig.baseUrl,
+        extraHeaders: profileConfig.headers,
+        publicFileUrlsExpireIn: profileConfig.publicFileUrlsExpireIn,
+      });
+
+      if (profileConfig.format === "json") {
+        console.log(JSON.stringify(result, null, 2));
+        return;
+      }
+
+      console.log(`Deleted ${assetUrl}.`);
     });
 
   return command;
