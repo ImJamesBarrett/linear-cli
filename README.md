@@ -181,3 +181,28 @@ Delete an uploaded asset by URL:
 ```bash
 linear upload delete https://assets.example.com/path/to/file.png
 ```
+
+## Registry regeneration
+
+The generated registries under `src/generated/` are derived from Linear's published schema SDL. Do not edit those files by hand.
+
+Refresh the vendored schema and regenerate the registries with:
+
+```bash
+pnpm fetch:schema
+pnpm generate
+```
+
+When the schema changes:
+
+1. refresh `src/generated/schema.graphql`
+2. regenerate the query, mutation, entity, and connection registries
+3. rerun the test suite to catch command-surface drift and behavior regressions
+4. inspect any inventory-count failures before updating expectations
+
+Maintenance expectations:
+
+- `scripts/fetch-schema.ts` is the only supported way to refresh the vendored schema
+- `scripts/generate-registry.ts` owns the generated command metadata and exact inventory counts
+- `test/unit/command-surface.test.ts` and `test/integration/command-surface-smoke.test.ts` should stay green after any regeneration
+- if Linear adds or removes operations, update the local planning artifacts in `.project/` as needed, but keep `.project/` itself uncommitted
