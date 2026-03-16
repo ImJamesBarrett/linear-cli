@@ -20,6 +20,8 @@ import type {
   OperationRegistryEntry,
   RegistryArgumentDefinition,
 } from "../../core/registry/types.js";
+import { writeJsonOutput } from "../../core/output/json.js";
+import type { CommandExecutionEnvelope } from "../../core/output/types.js";
 import { createRuntimeContext } from "../../core/runtime/context.js";
 import { CliError, EXIT_CODES } from "../../core/runtime/exit-codes.js";
 import { loadJsonInput } from "../../core/util/json-input.js";
@@ -117,7 +119,10 @@ export function registerGeneratedOperationSubcommands(
             pagination: null,
           };
 
-      writeCommandOutput(envelope, profileConfig.format);
+      writeCommandOutput(entry, envelope, {
+        format: profileConfig.format,
+        verbose: runtimeContext.globalOptions.verbose,
+      });
     });
   }
 }
@@ -292,27 +297,17 @@ function getExplicitBooleanOptionValue(
 }
 
 function writeCommandOutput(
-  envelope: {
-    data: unknown;
-    errors: unknown[];
-    headers: Record<string, string>;
-    pagination: unknown;
-    rateLimit: unknown;
-    status: number;
+  entry: OperationRegistryEntry,
+  envelope: CommandExecutionEnvelope,
+  options: {
+    format: OutputFormat;
+    verbose: boolean;
   },
-  format: OutputFormat,
 ): void {
-  if (format === "json") {
-    console.log(
-      JSON.stringify(
-        {
-          data: envelope.data,
-          errors: envelope.errors,
-        },
-        null,
-        2,
-      ),
-    );
+  if (options.format === "json") {
+    writeJsonOutput(entry, envelope, {
+      verbose: options.verbose,
+    });
     return;
   }
 
