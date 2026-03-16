@@ -22,7 +22,7 @@ type CommandSurfaceRow = {
 
 const TEST_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(TEST_DIR, "../..");
-const COMMAND_SURFACE_PATH = path.join(REPO_ROOT, ".project/linear_command_surface.csv");
+const COMMAND_SURFACE_PATH = path.join(REPO_ROOT, "reference/linear_command_surface.csv");
 
 const CANONICAL_OPERATION_FLAGS = ["--select <fields|@file>", "--format <human|json>"];
 

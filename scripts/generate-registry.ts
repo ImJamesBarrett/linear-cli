@@ -42,7 +42,7 @@ const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(SCRIPT_DIR, "..");
 const GENERATED_DIR = path.join(REPO_ROOT, "src/generated");
 const SCHEMA_PATH = path.join(GENERATED_DIR, "schema.graphql");
-const INVENTORY_PATH = path.join(REPO_ROOT, ".project/linear_inventory.json");
+const INVENTORY_PATH = path.join(REPO_ROOT, "reference/linear_inventory.json");
 
 type InventoryOperationRow = {
   arguments: string;
@@ -213,7 +213,7 @@ function assertCountsMatchInventory(
     .map(([label, actual, expected]) => `${label}: expected ${expected}, received ${actual}`)
     .join("\n");
 
-  throw new Error(`generated registry counts do not match .project inventory\n${details}`);
+  throw new Error(`generated registry counts do not match reference inventory\n${details}`);
 }
 
 function collectOperationEntries({

@@ -25241,7 +25241,7 @@ type Organization implements Node {
   [DEPRECATED] The frequency at which to prompt for project updates.
   """
   projectUpdatesReminderFrequency: ProjectUpdateReminderFrequency!
-    @deprecated(reason: "Use organization.projectUpdatesReminderFrequencyInWeeks instead")
+    @deprecated(reason: "Use organization projectUpdatesReminderFrequencyInWeeks instead")
   """
   The feature release channel the organization belongs to.
   """

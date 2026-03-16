@@ -2,7 +2,7 @@
 
 `linear-cli` is a schema-driven command-line wrapper for the Linear GraphQL API.
 
-The implementation is based on the source inventories under `.project/`:
+The implementation is based on the tracked reference inventories under `reference/`:
 
 - 146 query root fields
 - 343 mutation root fields
@@ -54,7 +54,7 @@ Schema generation is wired into the repository layout already, but the fetch and
 │   └── types/        shared CLI types
 ├── scripts/          schema fetch and registry generation scripts
 ├── test/             unit, integration, and fixture coverage
-└── .project/         local planning and source specification inputs
+└── reference/        tracked command-surface and inventory snapshots
 ```
 
 ## Development workflow
@@ -67,7 +67,7 @@ The project is intentionally being built in small commit-sized steps:
 4. wire generated query and mutation commands
 5. add utility commands, output modes, and tests
 
-The local execution checklist lives in `.project/todo.md`. That file is intentionally local-only; git commits contain the implementation changes themselves.
+The execution plan is kept outside the repo; git commits contain the implementation changes themselves.
 
 ## Usage
 
@@ -205,4 +205,4 @@ Maintenance expectations:
 - `scripts/fetch-schema.ts` is the only supported way to refresh the vendored schema
 - `scripts/generate-registry.ts` owns the generated command metadata and exact inventory counts
 - `test/unit/command-surface.test.ts` and `test/integration/command-surface-smoke.test.ts` should stay green after any regeneration
-- if Linear adds or removes operations, update the local planning artifacts in `.project/` as needed, but keep `.project/` itself uncommitted
+- if Linear adds or removes operations, update the tracked reference inventories under `reference/` as needed
