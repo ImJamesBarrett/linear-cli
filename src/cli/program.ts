@@ -2,6 +2,7 @@ import { Command } from "commander";
 
 import { createAuthCommand } from "../commands/auth/index.js";
 import { createConfigCommand } from "../commands/config/index.js";
+import { registerGroupedOperationAliases } from "../commands/generated/register-grouped-operation-aliases.js";
 import { createGraphqlCommand } from "../commands/graphql/index.js";
 import { createMutationCommand } from "../commands/mutation/index.js";
 import { createQueryCommand } from "../commands/query/index.js";
@@ -21,6 +22,7 @@ export function createProgram(): Command {
 
   registerGlobalOptions(program);
   configureHelp(program);
+  registerGroupedOperationAliases(program);
   program.addCommand(createAuthCommand());
   program.addCommand(createConfigCommand());
   program.addCommand(createQueryCommand());

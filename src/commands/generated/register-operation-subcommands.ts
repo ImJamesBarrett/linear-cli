@@ -33,72 +33,94 @@ export function registerGeneratedOperationSubcommands(
   registry: GeneratedRegistry<OperationRegistryEntry>,
 ): void {
   for (const entry of registry.entries) {
-    const subcommand = command
-      .command(entry.cliSubcommand)
-      .description(entry.description || `Execute the ${entry.graphqlName} ${entry.kind}.`);
+    registerGeneratedOperationCommand(command, entry, entry.cliSubcommand);
+  }
+}
 
-    for (const argument of entry.arguments) {
-      if (argument.positionalName) {
-        subcommand.argument(`<${argument.positionalName}>`);
-      }
+export function registerGeneratedOperationCommand(
+  parent: Command,
+  entry: OperationRegistryEntry,
+  commandName: string,
+  description = entry.description || `Execute the ${entry.graphqlName} ${entry.kind}.`,
+): Command {
+  const subcommand =
+    parent.commands.find((command) => command.name() === commandName) ??
+    parent.command(commandName);
 
-      if (argument.cliFlag) {
-        subcommand.option(
-          getOptionDefinition(entry, argument),
-          argument.description || undefined,
-        );
-      }
+  subcommand.description(description);
+
+  for (const argument of entry.arguments) {
+    if (argument.positionalName) {
+      subcommand.argument(`<${argument.positionalName}>`);
     }
 
-    if (supportsAllPagination(entry)) {
-      subcommand.option("--all", "fetch all forward pages for connection queries");
-    }
-
-    subcommand.option("--select <fields|@file>", "override the default GraphQL selection set");
-
-    subcommand.action(async (...actionArgs: unknown[]) => {
-      const invokedCommand = actionArgs.at(-1);
-
-      if (!isCommand(invokedCommand)) {
-        throw new CliError("Invalid commander invocation state.", EXIT_CODES.runtimeFailure);
-      }
-
-      const positionals = mapPositionalArguments(entry, actionArgs.slice(0, -1));
-      const rawOptions = invokedCommand.optsWithGlobals<Record<string, unknown>>();
-      const allRequested = getExplicitBooleanOptionValue(invokedCommand, rawOptions, "all");
-
-      validatePaginationInvocation(entry, {
-        all: allRequested,
-        after: getExplicitOptionValue(invokedCommand, rawOptions, "after"),
-        before: getExplicitOptionValue(invokedCommand, rawOptions, "before"),
-        first: getExplicitOptionValue(invokedCommand, rawOptions, "first"),
-        last: getExplicitOptionValue(invokedCommand, rawOptions, "last"),
-      });
-
-      const runtimeContext = createRuntimeContext(invokedCommand);
-      const config = await loadConfigFile();
-      const profileConfig = resolveProfileConfig({
-        cliOptions: runtimeContext.globalOptions,
-        config,
-        envOverrides: readConfigEnvOverrides(),
-      });
-      const authorization = await resolveAuthorizationHeader({
-        profileConfig,
-      });
-      const selectionOverride =
-        typeof invokedCommand.optsWithGlobals().select === "string"
-          ? await loadSelectionOverride(invokedCommand.optsWithGlobals().select, {
-              cwd: runtimeContext.cwd,
-            })
-          : null;
-      const variables = await resolveOperationArgumentValues(
-        entry,
-        invokedCommand,
-        positionals,
-        runtimeContext.cwd,
+    if (argument.cliFlag) {
+      subcommand.option(
+        getOptionDefinition(entry, argument),
+        argument.description || undefined,
       );
-      const envelope = allRequested
-        ? await executeAllConnectionPages(entry, {
+    }
+  }
+
+  if (supportsAllPagination(entry)) {
+    subcommand.option("--all", "fetch all forward pages for connection queries");
+  }
+
+  subcommand.option("--select <fields|@file>", "override the default GraphQL selection set");
+
+  subcommand.action(async (...actionArgs: unknown[]) => {
+    const invokedCommand = actionArgs.at(-1);
+
+    if (!isCommand(invokedCommand)) {
+      throw new CliError("Invalid commander invocation state.", EXIT_CODES.runtimeFailure);
+    }
+
+    const positionals = mapPositionalArguments(entry, actionArgs.slice(0, -1));
+    const rawOptions = invokedCommand.optsWithGlobals<Record<string, unknown>>();
+    const allRequested = getExplicitBooleanOptionValue(invokedCommand, rawOptions, "all");
+
+    validatePaginationInvocation(entry, {
+      all: allRequested,
+      after: getExplicitOptionValue(invokedCommand, rawOptions, "after"),
+      before: getExplicitOptionValue(invokedCommand, rawOptions, "before"),
+      first: getExplicitOptionValue(invokedCommand, rawOptions, "first"),
+      last: getExplicitOptionValue(invokedCommand, rawOptions, "last"),
+    });
+
+    const runtimeContext = createRuntimeContext(invokedCommand);
+    const config = await loadConfigFile();
+    const profileConfig = resolveProfileConfig({
+      cliOptions: runtimeContext.globalOptions,
+      config,
+      envOverrides: readConfigEnvOverrides(),
+    });
+    const authorization = await resolveAuthorizationHeader({
+      profileConfig,
+    });
+    const selectionOverride =
+      typeof invokedCommand.optsWithGlobals().select === "string"
+        ? await loadSelectionOverride(invokedCommand.optsWithGlobals().select, {
+            cwd: runtimeContext.cwd,
+          })
+        : null;
+    const variables = await resolveOperationArgumentValues(
+      entry,
+      invokedCommand,
+      positionals,
+      runtimeContext.cwd,
+    );
+    const envelope = allRequested
+      ? await executeAllConnectionPages(entry, {
+          allowPartialData: runtimeContext.globalOptions.allowPartialData,
+          authorization,
+          baseUrl: profileConfig.baseUrl,
+          extraHeaders: profileConfig.headers,
+          publicFileUrlsExpireIn: profileConfig.publicFileUrlsExpireIn,
+          selectionOverride,
+          variables,
+        })
+      : {
+          ...(await executeCanonicalGraphQLOperation(entry, {
             allowPartialData: runtimeContext.globalOptions.allowPartialData,
             authorization,
             baseUrl: profileConfig.baseUrl,
@@ -106,26 +128,17 @@ export function registerGeneratedOperationSubcommands(
             publicFileUrlsExpireIn: profileConfig.publicFileUrlsExpireIn,
             selectionOverride,
             variables,
-          })
-        : {
-            ...(await executeCanonicalGraphQLOperation(entry, {
-              allowPartialData: runtimeContext.globalOptions.allowPartialData,
-              authorization,
-              baseUrl: profileConfig.baseUrl,
-              extraHeaders: profileConfig.headers,
-              publicFileUrlsExpireIn: profileConfig.publicFileUrlsExpireIn,
-              selectionOverride,
-              variables,
-            })),
-            pagination: null,
-          };
+          })),
+          pagination: null,
+        };
 
-      writeCommandOutput(entry, envelope, {
-        format: profileConfig.format,
-        verbose: runtimeContext.globalOptions.verbose,
-      });
+    writeCommandOutput(entry, envelope, {
+      format: profileConfig.format,
+      verbose: runtimeContext.globalOptions.verbose,
     });
-  }
+  });
+
+  return subcommand;
 }
 
 async function resolveOperationArgumentValues(
