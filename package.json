@@ -4,6 +4,7 @@
   "private": true,
   "description": "Schema-driven CLI wrapper around the Linear GraphQL API.",
   "type": "module",
+  "packageManager": "pnpm@10.28.2",
   "bin": {
     "linear": "./dist/bin/linear.js"
   },
@@ -21,6 +22,20 @@
     "generate": "node --import tsx ./scripts/generate-registry.ts",
     "test": "vitest run",
     "test:watch": "vitest"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "env-paths": "^4.0.0",
+    "graphql": "^16.13.1",
+    "keytar": "^7.9.0",
+    "picocolors": "^1.1.1",
+    "undici": "^7.24.4",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
   }
 }
-

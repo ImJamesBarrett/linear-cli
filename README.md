@@ -20,9 +20,8 @@ The goal is full generated coverage rather than a hand-maintained subset. Query 
 ## Local requirements
 
 - Node.js 22 or newer
-- npm 11 or newer
+- pnpm 10 or newer
 
 ## Current status
 
 The repository scaffold is in place. Dependency installation, schema generation, and the runtime implementation are tracked in `.project/todo.md`.
-
