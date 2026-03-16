@@ -23,6 +23,39 @@ const QUERY_ACTION_SEGMENTS = new Set([
   "suggestion",
   "suggestions",
 ]);
+const IRREGULAR_SINGULARS = new Map<string, string>([
+  ["issues", "issue"],
+  ["projects", "project"],
+  ["releases", "release"],
+]);
+const GROUPED_ALIAS_OVERRIDES = new Map<string, string[]>([
+  ["query:administrable-teams", ["team", "administrable", "list"]],
+  ["query:archived-teams", ["team", "archived", "list"]],
+  ["query:available-users", ["user", "available", "list"]],
+  ["query:failure-for-oauth-webhooks", ["oauth", "webhook", "failure", "list"]],
+  ["query:fetch-data", ["data", "fetch"]],
+  ["query:latest-release-by-access-key", ["release", "latest", "by", "access", "key", "get"]],
+  ["query:search-documents", ["document", "search"]],
+  ["query:search-issues", ["issue", "search"]],
+  ["query:search-projects", ["project", "search"]],
+  ["query:semantic-search", ["search", "semantic"]],
+  ["mutation:create-csv-export-report", ["csv", "export", "report", "create"]],
+  ["mutation:create-initiative-update-reminder", ["initiative", "update", "reminder", "create"]],
+  ["mutation:create-organization-from-onboarding", ["organization", "onboarding", "create"]],
+  ["mutation:create-project-update-reminder", ["project", "update", "reminder", "create"]],
+  ["mutation:file-upload-dangerously-delete", ["file", "upload", "delete"]],
+  ["mutation:join-organization-from-onboarding", ["organization", "onboarding", "join"]],
+  ["mutation:leave-organization", ["organization", "leave"]],
+  ["mutation:logout-all-sessions", ["session", "logout", "all"]],
+  ["mutation:logout-other-sessions", ["session", "logout", "other"]],
+  ["mutation:logout-session", ["session", "logout"]],
+  ["mutation:refresh-google-sheets-data", ["google", "sheets", "data", "refresh"]],
+  ["mutation:resend-organization-invite", ["organization", "invite", "resend"]],
+  ["mutation:resend-organization-invite-by-email", ["organization", "invite", "resend", "by", "email"]],
+  ["mutation:track-anonymous-event", ["anonymous", "event", "track"]],
+  ["mutation:update-integration-slack-scopes", ["integration", "slack", "scopes", "update"]],
+  ["mutation:verify-git-hub-enterprise-server-installation", ["git", "hub", "enterprise", "server", "installation", "verify"]],
+]);
 
 export function registerGroupedOperationAliases(program: Command): void {
   const aliasDefinitions = buildGroupedAliasDefinitions();
@@ -72,6 +105,12 @@ function buildGroupedAliasDefinitions(): GroupedAliasDefinition[] {
 }
 
 function toGroupedAliasPath(entry: OperationRegistryEntry): string[] {
+  const override = GROUPED_ALIAS_OVERRIDES.get(`${entry.kind}:${entry.cliSubcommand}`);
+
+  if (override) {
+    return override;
+  }
+
   const parts = entry.cliSubcommand.split("-");
   const root = singularize(parts[0]);
 
@@ -101,12 +140,10 @@ function toGroupedAliasPath(entry: OperationRegistryEntry): string[] {
 }
 
 function singularize(value: string): string {
-  if (value === "issues") {
-    return "issue";
-  }
+  const irregular = IRREGULAR_SINGULARS.get(value);
 
-  if (value === "projects") {
-    return "project";
+  if (irregular) {
+    return irregular;
   }
 
   if (value.endsWith("ies")) {
