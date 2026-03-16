@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -42,9 +42,11 @@ const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(SCRIPT_DIR, "..");
 const GENERATED_DIR = path.join(REPO_ROOT, "src/generated");
 const SCHEMA_PATH = path.join(GENERATED_DIR, "schema.graphql");
+const INVENTORY_PATH = path.join(REPO_ROOT, ".project/linear_inventory.json");
 
 async function main(): Promise<void> {
   const sdl = await readFile(SCHEMA_PATH, "utf8");
+  const schemaStats = await stat(SCHEMA_PATH);
   const schema = buildASTSchema(parse(sdl), { assumeValidSDL: true });
 
   const connectionEntries = collectConnectionEntries(schema);
@@ -54,23 +56,6 @@ async function main(): Promise<void> {
     entityEntries,
     connectionEntries,
   );
-
-  const metadata = buildMetadata({
-    queryCount: schema.getQueryType()?.getFields()
-      ? Object.keys(schema.getQueryType()!.getFields()).length
-      : 0,
-    mutationCount: schema.getMutationType()?.getFields()
-      ? Object.keys(schema.getMutationType()!.getFields()).length
-      : 0,
-    entityCount: entityEntries.length,
-    relationshipCount: relationshipEntries.length,
-    commandCount:
-      (schema.getQueryType() ? Object.keys(schema.getQueryType()!.getFields()).length : 0) +
-      (schema.getMutationType()
-        ? Object.keys(schema.getMutationType()!.getFields()).length
-        : 0) +
-      UTILITY_COMMAND_COUNT,
-  });
 
   const entityNames = new Set(entityEntries.map((entry) => entry.entity));
   const connectionNodeTypes = new Map(
@@ -90,6 +75,18 @@ async function main(): Promise<void> {
     entityNames,
     connectionNodeTypes,
   });
+
+  const metadata = buildMetadata({
+    generatedAt: schemaStats.mtime.toISOString(),
+    queryCount: queryEntries.length,
+    mutationCount: mutationEntries.length,
+    entityCount: entityEntries.length,
+    relationshipCount: relationshipEntries.length,
+    commandCount: queryEntries.length + mutationEntries.length + UTILITY_COMMAND_COUNT,
+  });
+
+  const expectedCounts = await readExpectedCounts();
+  assertCountsMatchInventory(metadata, expectedCounts);
 
   await mkdir(GENERATED_DIR, { recursive: true });
 
@@ -136,18 +133,71 @@ async function main(): Promise<void> {
 }
 
 function buildMetadata(counts: {
+  generatedAt: string;
   queryCount: number;
   mutationCount: number;
   entityCount: number;
   relationshipCount: number;
   commandCount: number;
 }): GeneratedRegistryMetadata {
+  const { generatedAt, ...rest } = counts;
+
   return {
     schemaPath: "src/generated/schema.graphql",
     schemaSourceUrl: DEFAULT_SCHEMA_SOURCE_URL,
-    generatedAt: new Date().toISOString(),
-    ...counts,
+    generatedAt,
+    ...rest,
   };
+}
+
+async function readExpectedCounts(): Promise<{
+  queries: number;
+  mutations: number;
+  entities: number;
+  relationships: number;
+  command_rows: number;
+}> {
+  const raw = await readFile(INVENTORY_PATH, "utf8");
+  const inventory = JSON.parse(raw) as {
+    counts: {
+      queries: number;
+      mutations: number;
+      entities: number;
+      relationships: number;
+      command_rows: number;
+    };
+  };
+
+  return inventory.counts;
+}
+
+function assertCountsMatchInventory(
+  metadata: GeneratedRegistryMetadata,
+  expectedCounts: {
+    queries: number;
+    mutations: number;
+    entities: number;
+    relationships: number;
+    command_rows: number;
+  },
+): void {
+  const mismatches = [
+    ["queries", metadata.queryCount, expectedCounts.queries],
+    ["mutations", metadata.mutationCount, expectedCounts.mutations],
+    ["entities", metadata.entityCount, expectedCounts.entities],
+    ["relationships", metadata.relationshipCount, expectedCounts.relationships],
+    ["command_rows", metadata.commandCount, expectedCounts.command_rows],
+  ].filter(([, actual, expected]) => actual !== expected);
+
+  if (mismatches.length === 0) {
+    return;
+  }
+
+  const details = mismatches
+    .map(([label, actual, expected]) => `${label}: expected ${expected}, received ${actual}`)
+    .join("\n");
+
+  throw new Error(`generated registry counts do not match .project inventory\n${details}`);
 }
 
 function collectOperationEntries({

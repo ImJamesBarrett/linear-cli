@@ -5,7 +5,7 @@ export const connectionRegistry: GeneratedRegistry<ConnectionRegistryEntry> = {
   "metadata": {
     "schemaPath": "src/generated/schema.graphql",
     "schemaSourceUrl": "https://raw.githubusercontent.com/linear/linear/master/packages/sdk/src/schema.graphql",
-    "generatedAt": "2026-03-16T12:38:20.287Z",
+    "generatedAt": "2026-03-16T12:33:11.811Z",
     "queryCount": 146,
     "mutationCount": 343,
     "entityCount": 105,
