@@ -1,8 +1,17 @@
 #!/usr/bin/env node
 
 import { createProgram } from "../cli/program.js";
+import { formatErrorMessage, resolveExitCode } from "../core/runtime/exit-codes.js";
 
-const program = createProgram();
+try {
+  const program = createProgram();
+  await program.parseAsync(process.argv);
+} catch (error) {
+  const message = formatErrorMessage(error);
 
-await program.parseAsync(process.argv);
+  if (message) {
+    console.error(message);
+  }
 
+  process.exitCode = resolveExitCode(error);
+}
